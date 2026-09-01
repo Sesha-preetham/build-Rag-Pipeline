@@ -1,0 +1,1144 @@
+RAG AUTOMOTIVE DATASET — MAHINDRA & MAHINDRA LIMITED
+Document purpose: source-based automotive knowledge corpus for Retrieval-Augmented Generation experiments.
+Data snapshot: 2025 corporate sales/financial data plus selected India-market model information available around August 2026.
+
+IMPORTANT DATA QUALITY RULES
+1. Corporate sales, production, wholesale, retail and exports are different measures.
+2. Fiscal years differ between manufacturers. Do not compare fiscal-year numbers with calendar-year numbers without checking the period.
+3. Model specifications vary by market, model year, trim and powertrain.
+4. Prices are India-market snapshots and are not universal global prices.
+5. Where an exact figure was not found in the cited source, the field is marked market-dependent rather than invented.
+6. This is a curated, paraphrased dataset. It is not a copy of any annual report.
+
+
+### 1. Company identity and overview
+
+Mahindra & Mahindra Limited is the company represented by this document. The document is designed to capture corporate identity, vehicle portfolio, technology, manufacturing, sales geography, financial indicators and model-level information in one retrievable unit.
+
+The main reporting period for the sales dataset is FY2025 (year ended March 31, 2025). The headline vehicle figure is 941,115 vehicles sold by the Company; 424,641 tractors; 1.37 million vehicles and tractors globally across Automotive and Farm sectors and subsidiaries/JVs. This headline should always be interpreted together with the reporting definition used by the company.
+
+Automotive companies publish multiple measures. A delivery may refer to a vehicle handed to a customer, a wholesale may represent a vehicle sold through a distribution channel, a retail sale may represent the end-customer transaction, production measures vehicles leaving a manufacturing line, and exports measure vehicles shipped across borders. These measures can differ substantially.
+
+For RAG evaluation, this distinction is intentionally preserved. A strong system should not answer a question about customer deliveries using a production number simply because both numbers contain the word 'vehicles'.
+
+The document also contains selected model information. These model records are deliberately structured so that retrieval can answer questions about body style, engine or electric architecture, output, mileage, dimensions, price and safety/technology themes.
+
+
+### 2. 2025 sales and vehicle-volume facts
+
+The principal 2025 volume figure recorded for Mahindra & Mahindra Limited is 941,115 vehicles sold by the Company; 424,641 tractors; 1.37 million vehicles and tractors globally across Automotive and Farm sectors and subsidiaries/JVs. The number should be stored with the time period and measurement definition because the same company can publish different totals for different reporting scopes.
+
+The regional distribution reported or summarized for this company is: India: primary automotive and tractor market; Exports: included in company vehicle/tractor sales; Global subsidiaries/JVs: included in the broader 1.37 million global sales figure.
+
+Mahindra's headline FY25 vehicle number includes domestic sales and exports and includes specified subsidiaries such as Mahindra Last Mile Mobility and Mahindra Electric Automobile.
+
+Regional sales are especially valuable for RAG because a user can ask both direct questions and comparison questions. Examples include which region was largest, whether a region grew or declined, how much of the total was concentrated in a country, and whether the company's electric-vehicle mix differed by geography.
+
+A useful retrieval strategy is to attach region metadata to chunks containing sales tables. Another useful strategy is to keep the reporting year, sales definition and unit scale in metadata. For example, 'million vehicles' and 'thousand vehicles' must not be treated as identical numeric representations.
+
+
+### 3. Regional sales dataset
+
+The regional table below is intentionally written as individual facts rather than as one compressed sentence. This makes it useful for chunking and retrieval tests.
+
+India: primary automotive and tractor market. This regional figure belongs to the FY2025 (year ended March 31, 2025) sales context for Mahindra & Mahindra Limited. It should be compared only with figures using the same reporting definition unless the question explicitly asks for a cross-definition analysis.
+
+Exports: included in company vehicle/tractor sales. This regional figure belongs to the FY2025 (year ended March 31, 2025) sales context for Mahindra & Mahindra Limited. It should be compared only with figures using the same reporting definition unless the question explicitly asks for a cross-definition analysis.
+
+Global subsidiaries/JVs: included in the broader 1.37 million global sales figure. This regional figure belongs to the FY2025 (year ended March 31, 2025) sales context for Mahindra & Mahindra Limited. It should be compared only with figures using the same reporting definition unless the question explicitly asks for a cross-definition analysis.
+
+When building an evaluation set, questions should include both exact lookup and reasoning tasks. An exact lookup asks for one region. A reasoning task asks for the largest region, the smallest region, a share of the total, or a comparison with another region.
+
+Regional questions can also be designed to test whether the retriever returns the right company's data. Similar numbers occur across automotive companies, so metadata and semantic context are important.
+
+
+### 4. Product portfolio and selected models
+
+Mahindra & Mahindra Limited has a portfolio spanning multiple vehicle categories. The following selected models are included to create model-level entities for RAG retrieval.
+
+Thar is included as a selected Off-road SUV model reference for Mahindra & Mahindra Limited. The documented powertrain description is Petrol/diesel depending on version. The cited performance field is 117–150 bhp range shown in current market snapshot. Fuel-efficiency information is 12–15 km/l range shown in current market snapshot. The dimensional reference is Approx. 3,985 x 1,820 x 1,920 mm; wheelbase 2,450 mm. Pricing information is ₹12.05 lakh starting in an August 2026 market snapshot. Prices are market snapshots rather than timeless facts and can change with city, trim, taxes, offers, model year and manufacturer revisions. The model should therefore be treated as a structured RAG entity with fields for model name, body type, powertrain, output, efficiency, dimensions and price. When answering a question about this model, the retrieval system should preserve the market and date context rather than mixing figures from different variants or years.
+
+Thar Roxx is included as a selected Five-door SUV model reference for Mahindra & Mahindra Limited. The documented powertrain description is Petrol/diesel. The cited performance field is 150–174 bhp range shown in current market snapshot. Fuel-efficiency information is 12–15 km/l range shown in current market snapshot. The dimensional reference is Approx. 4,428 x 1,870 x 1,923 mm; wheelbase 2,850 mm. Pricing information is ₹14.77 lakh starting in an August 2026 market snapshot. Prices are market snapshots rather than timeless facts and can change with city, trim, taxes, offers, model year and manufacturer revisions. The model should therefore be treated as a structured RAG entity with fields for model name, body type, powertrain, output, efficiency, dimensions and price. When answering a question about this model, the retrieval system should preserve the market and date context rather than mixing figures from different variants or years.
+
+Scorpio N is included as a selected Three-row SUV model reference for Mahindra & Mahindra Limited. The documented powertrain description is 2.0L turbo petrol / 2.2L diesel. The cited performance field is 130–200 bhp range shown in current market snapshot. Fuel-efficiency information is Variant dependent. The dimensional reference is Approx. 4,662 x 1,917 x 1,870 mm; wheelbase 2,750 mm. Pricing information is ₹13.69 lakh starting in an August 2026 market snapshot. Prices are market snapshots rather than timeless facts and can change with city, trim, taxes, offers, model year and manufacturer revisions. The model should therefore be treated as a structured RAG entity with fields for model name, body type, powertrain, output, efficiency, dimensions and price. When answering a question about this model, the retrieval system should preserve the market and date context rather than mixing figures from different variants or years.
+
+BE 6 is included as a selected Electric SUV model reference for Mahindra & Mahindra Limited. The documented powertrain description is Battery electric. The cited performance field is 228–282 bhp range shown in current market snapshot. Fuel-efficiency information is Electric range depends on battery/test cycle. The dimensional reference is Approx. 4,371 x 1,907 x 1,627 mm; wheelbase 2,775 mm. Pricing information is ₹22.92 lakh cited for BE 6 Sporteq in an August 2026 market snapshot. Prices are market snapshots rather than timeless facts and can change with city, trim, taxes, offers, model year and manufacturer revisions. The model should therefore be treated as a structured RAG entity with fields for model name, body type, powertrain, output, efficiency, dimensions and price. When answering a question about this model, the retrieval system should preserve the market and date context rather than mixing figures from different variants or years.
+
+XEV 9e is included as a selected Electric SUV/coupe model reference for Mahindra & Mahindra Limited. The documented powertrain description is 59 kWh or 79 kWh battery. The cited performance field is Variant dependent. Fuel-efficiency information is 79 kWh version claimed at 656 km range. The dimensional reference is Approx. 4,790 x 1,905 x 1,690 mm; wheelbase 2,775 mm. Pricing information is ₹21.9 lakh starting in an August 2026 market snapshot. Prices are market snapshots rather than timeless facts and can change with city, trim, taxes, offers, model year and manufacturer revisions. The model should therefore be treated as a structured RAG entity with fields for model name, body type, powertrain, output, efficiency, dimensions and price. When answering a question about this model, the retrieval system should preserve the market and date context rather than mixing figures from different variants or years.
+
+Model-level retrieval should preserve the relationship between a model and its manufacturer. A query such as 'Which model has a 2.0-litre turbo engine?' should not retrieve a model from another company simply because the engine displacement is similar.
+
+For numerical questions, the answer should preserve units. Engine displacement is commonly expressed in cubic centimetres or litres, power may be expressed in bhp, PS or kW, torque in Nm, dimensions in millimetres, price in lakh/crore rupees and fuel economy in km/l. Electric range must include the test-cycle context where available.
+
+
+### 5. Engine and powertrain specifications
+
+The powertrain portfolio for Mahindra & Mahindra Limited includes the technologies represented in the selected models: Petrol/diesel depending on version; Petrol/diesel; 2.0L turbo petrol / 2.2L diesel; Battery electric; 59 kWh or 79 kWh battery.
+
+Internal-combustion engines can be compared by displacement, cylinder arrangement, forced induction, maximum power, maximum torque, transmission and fuel type. Hybrid systems require additional fields such as battery architecture and electric-motor contribution. Battery-electric vehicles require battery capacity, motor output, charging rate and range.
+
+A RAG dataset should not collapse all powertrain types into one generic 'engine' field. An electric vehicle does not have engine displacement in the same sense as an internal-combustion vehicle. A hybrid may contain both an engine and electric motor.
+
+Transmission values should also be preserved. Manual, automatic torque-converter, dual-clutch, CVT, AMT and single-speed EV reductions represent different technologies and should be retrievable independently.
+
+Power figures are variant-dependent. The selected model records therefore use representative values and explicitly state when the value is variant or market dependent.
+
+
+### 6. Mileage, efficiency and operating-cost context
+
+Fuel economy is a contextual metric. A claimed test-cycle value should not be presented as the same thing as real-world owner-reported consumption. Laboratory cycles are designed for standardized comparison, while real driving depends on traffic, speed, climate, load, tyre pressure, driving style and route.
+
+For Thar, the documented efficiency reference is 12–15 km/l range shown in current market snapshot. This value should be stored with the model and powertrain rather than as a company-wide mileage figure.
+
+For Thar Roxx, the documented efficiency reference is 12–15 km/l range shown in current market snapshot. This value should be stored with the model and powertrain rather than as a company-wide mileage figure.
+
+For Scorpio N, the documented efficiency reference is Variant dependent. This value should be stored with the model and powertrain rather than as a company-wide mileage figure.
+
+For BE 6, the documented efficiency reference is Electric range depends on battery/test cycle. This value should be stored with the model and powertrain rather than as a company-wide mileage figure.
+
+For XEV 9e, the documented efficiency reference is 79 kWh version claimed at 656 km range. This value should be stored with the model and powertrain rather than as a company-wide mileage figure.
+
+For EVs, the analogous fields are electric range, battery capacity and energy consumption. Range also varies with temperature, speed, tyre choice, payload, climate-control use and test cycle.
+
+These distinctions make excellent RAG test cases. A good question might ask for the highest claimed mileage among selected models, while a stronger question asks whether that value belongs to a petrol, diesel, CNG, hybrid or electric configuration.
+
+
+### 7. Dimensions and packaging
+
+Vehicle dimensions provide structured numerical data for retrieval. The main fields are length, width, height and wheelbase. Additional useful fields include ground clearance, boot volume, seating capacity, kerb weight and turning radius.
+
+Thar dimension reference: Approx. 3,985 x 1,820 x 1,920 mm; wheelbase 2,450 mm. The figure is market/trim dependent where stated and should not be treated as a universal specification for every derivative.
+
+Thar Roxx dimension reference: Approx. 4,428 x 1,870 x 1,923 mm; wheelbase 2,850 mm. The figure is market/trim dependent where stated and should not be treated as a universal specification for every derivative.
+
+Scorpio N dimension reference: Approx. 4,662 x 1,917 x 1,870 mm; wheelbase 2,750 mm. The figure is market/trim dependent where stated and should not be treated as a universal specification for every derivative.
+
+BE 6 dimension reference: Approx. 4,371 x 1,907 x 1,627 mm; wheelbase 2,775 mm. The figure is market/trim dependent where stated and should not be treated as a universal specification for every derivative.
+
+XEV 9e dimension reference: Approx. 4,790 x 1,905 x 1,690 mm; wheelbase 2,775 mm. The figure is market/trim dependent where stated and should not be treated as a universal specification for every derivative.
+
+Wheelbase is particularly useful for comparison questions because it is related to cabin packaging but does not by itself determine interior space. Vehicle width and height also influence road presence and parking considerations.
+
+A RAG system should keep dimensions in their original units and avoid silently converting them during retrieval. If a user asks for metres while the source is in millimetres, conversion should happen after retrieval.
+
+
+### 8. Price information
+
+Price is one of the most volatile fields in an automotive corpus. Prices change because manufacturers introduce new model years, update variants, revise taxes, run discounts or change ex-showroom prices.
+
+Thar price reference: ₹12.05 lakh starting in an August 2026 market snapshot. This is a dated India-market snapshot and is not a recommendation or a guaranteed current dealer quotation.
+
+Thar Roxx price reference: ₹14.77 lakh starting in an August 2026 market snapshot. This is a dated India-market snapshot and is not a recommendation or a guaranteed current dealer quotation.
+
+Scorpio N price reference: ₹13.69 lakh starting in an August 2026 market snapshot. This is a dated India-market snapshot and is not a recommendation or a guaranteed current dealer quotation.
+
+BE 6 price reference: ₹22.92 lakh cited for BE 6 Sporteq in an August 2026 market snapshot. This is a dated India-market snapshot and is not a recommendation or a guaranteed current dealer quotation.
+
+XEV 9e price reference: ₹21.9 lakh starting in an August 2026 market snapshot. This is a dated India-market snapshot and is not a recommendation or a guaranteed current dealer quotation.
+
+For a high-quality RAG evaluation set, every price chunk should contain the country, city if relevant, currency, price basis such as ex-showroom or on-road, date, model year and variant. Without those fields, the retriever can return a technically correct number that is wrong for the user's context.
+
+Questions should distinguish between starting price, top-variant price and on-road price. These are not interchangeable.
+
+
+### 9. Safety and driver-assistance information
+
+Safety information should be represented using discrete features such as airbags, electronic stability control, anti-lock braking, traction control, cameras, parking sensors, autonomous emergency braking, lane-keeping support, adaptive cruise control and blind-spot monitoring.
+
+Safety equipment is usually trim-dependent. A feature appearing in a premium variant should not automatically be attributed to the base variant.
+
+Safety ratings also depend on market, test protocol and model year. A crash-test result from one market should not be generalized to every market configuration without checking the test scope.
+
+For RAG, safety questions are useful because they require semantic retrieval from feature descriptions rather than only exact numeric matching.
+
+
+### 10. EV and electrification strategy
+
+Mahindra's EV strategy expanded with dedicated electric SUVs such as BE 6 and XEV 9e, while the company continued ICE SUVs and commercial vehicles.
+
+Electrification can be represented at several levels: mild hybrid, full hybrid, plug-in hybrid, battery electric and fuel-cell electric. The distinction matters because each technology has different charging, fuel and energy characteristics.
+
+The corporate-level EV section should be connected to model-level records through model names and powertrain metadata. This allows questions such as 'Which selected models are fully electric?' or 'Which models use hybrid systems?'
+
+For regional analysis, the RAG system should retrieve both corporate strategy and actual sales data. A strategy statement is not proof of sales volume. Similarly, a sales number does not by itself explain the company's technology strategy.
+
+
+### 11. Manufacturing and production
+
+Mahindra & Mahindra Limited operates within a global automotive manufacturing and supply ecosystem. Manufacturing information is relevant because vehicle sales, production and exports are connected but not identical.
+
+Useful manufacturing fields include plant location, production capacity, model produced, powertrain type, localization, supplier network, battery production, joint ventures and logistics routes.
+
+A manufacturing plant may produce vehicles for several countries, and a vehicle sold in a region may have been produced in a different region. This makes manufacturing-location questions an excellent test of retrieval precision.
+
+For this dataset, manufacturing claims should be paired with the relevant corporate report or official manufacturing source. If a plant-level fact is not explicitly available in the source set, it should not be invented.
+
+
+### 12. Technology and software
+
+Modern automotive technology spans powertrain control, connected services, infotainment, advanced driver assistance, digital cockpits, over-the-air software updates, navigation, vehicle-to-cloud communication and increasingly software-defined vehicle architectures.
+
+The selected model portfolio should be enriched with technology fields when a source provides them. Examples include ADAS packages, digital displays, smartphone integration, connected-car services, remote vehicle functions and charging technology.
+
+Technology is another strong RAG category because product names and technical concepts often appear in different sections of a long corporate document. A query may mention a technology without mentioning the model name.
+
+
+### 13. Financial information
+
+The headline financial context for Mahindra & Mahindra Limited is tied to the reporting period FY2025 (year ended March 31, 2025). Mahindra FY25 reporting highlights 14.1% year-on-year growth in vehicle volume and 12.2% growth in tractor volume.
+
+Financial values should retain their currency and scale. KRW trillion, Japanese yen billion, euros billion and Indian rupees crore are not directly comparable without normalization.
+
+For cross-company RAG questions, the safest approach is to retrieve the source values first and perform arithmetic only after retrieval. This reduces the chance of mixing fiscal periods or currency units.
+
+Financial information is included because automotive companies are not only manufacturers; they also operate financing, leasing, insurance, technology and other businesses in many cases.
+
+
+### 14. Warranty and after-sales context
+
+Warranty is a market-specific commercial term. It can cover the vehicle for a fixed period or mileage, while separate warranties may apply to batteries, paint, corrosion and accessories.
+
+The dataset should therefore treat warranty as a structured field with market, duration, mileage limit, battery coverage and exclusions. A warranty advertised in one country should not be assumed to apply globally.
+
+For the current model snapshots, warranty should be verified against the manufacturer's latest India warranty terms before making a customer-facing decision. This file deliberately avoids turning dealer or third-party warranty summaries into universal corporate policy.
+
+
+### 15. Market share and competitive context
+
+Market share is a ratio and must always specify the market, segment, period and denominator. Passenger-vehicle share, SUV share, EV share and total automotive share are different measures.
+
+The company sales figures in this document are manufacturer-level volumes. They should not be interpreted as market share unless the relevant total market denominator is also available.
+
+Competitive RAG questions can compare two or more manufacturers, but the system should retrieve matching definitions. A global company delivery figure should not be compared with a domestic retail-sales figure without an explicit caveat.
+
+
+### 16. Historical trend interpretation
+
+The reporting data for Mahindra & Mahindra Limited should be used as a time-series corpus when multiple annual observations are available. The most important dimensions are vehicle volume, regional mix, electrified volume, revenue, operating profit and model mix.
+
+A useful RAG question can ask whether sales increased or decreased from one year to another, but arithmetic should be performed from retrieved values rather than from memory.
+
+The same principle applies to regional trends. If two years of regional sales are available, the system can compute absolute change and percentage change. The source period and unit must remain attached to the numbers.
+
+
+### 17. RAG metadata recommendations
+
+Recommended metadata for this file: company=Mahindra & Mahindra Limited; report_period=FY2025 (year ended March 31, 2025); industry=automotive; document_type=company dossier; geography=global plus India model snapshot.
+
+Recommended model metadata: model_name, company, model_type, fuel_type, powertrain, engine_displacement, power, torque, mileage, length_mm, width_mm, height_mm, wheelbase_mm, price_inr, price_date, market, safety_features and source.
+
+Recommended sales metadata: sales_year, metric_type, geography, unit, value, reporting_scope and source.
+
+Recommended retrieval filters include company, model, region, year, powertrain and metric type. Metadata filters can complement semantic retrieval but should not replace it.
+
+
+### 18. Atomic data records for chunking
+
+Sales fact — Mahindra & Mahindra Limited — FY2025 (year ended March 31, 2025) — region: India — reported value: primary automotive and tractor market.
+
+Sales fact — Mahindra & Mahindra Limited — FY2025 (year ended March 31, 2025) — region: Exports — reported value: included in company vehicle/tractor sales.
+
+Sales fact — Mahindra & Mahindra Limited — FY2025 (year ended March 31, 2025) — region: Global subsidiaries/JVs — reported value: included in the broader 1.37 million global sales figure.
+
+Model fact — Thar — manufacturer: Mahindra & Mahindra Limited — category: Off-road SUV.
+
+Powertrain fact — Thar — Petrol/diesel depending on version.
+
+Output fact — Thar — 117–150 bhp range shown in current market snapshot.
+
+Efficiency fact — Thar — 12–15 km/l range shown in current market snapshot.
+
+Dimension fact — Thar — Approx. 3,985 x 1,820 x 1,920 mm; wheelbase 2,450 mm.
+
+Price fact — Thar — ₹12.05 lakh starting in an August 2026 market snapshot.
+
+Model fact — Thar Roxx — manufacturer: Mahindra & Mahindra Limited — category: Five-door SUV.
+
+Powertrain fact — Thar Roxx — Petrol/diesel.
+
+Output fact — Thar Roxx — 150–174 bhp range shown in current market snapshot.
+
+Efficiency fact — Thar Roxx — 12–15 km/l range shown in current market snapshot.
+
+Dimension fact — Thar Roxx — Approx. 4,428 x 1,870 x 1,923 mm; wheelbase 2,850 mm.
+
+Price fact — Thar Roxx — ₹14.77 lakh starting in an August 2026 market snapshot.
+
+Model fact — Scorpio N — manufacturer: Mahindra & Mahindra Limited — category: Three-row SUV.
+
+Powertrain fact — Scorpio N — 2.0L turbo petrol / 2.2L diesel.
+
+Output fact — Scorpio N — 130–200 bhp range shown in current market snapshot.
+
+Efficiency fact — Scorpio N — Variant dependent.
+
+Dimension fact — Scorpio N — Approx. 4,662 x 1,917 x 1,870 mm; wheelbase 2,750 mm.
+
+Price fact — Scorpio N — ₹13.69 lakh starting in an August 2026 market snapshot.
+
+Model fact — BE 6 — manufacturer: Mahindra & Mahindra Limited — category: Electric SUV.
+
+Powertrain fact — BE 6 — Battery electric.
+
+Output fact — BE 6 — 228–282 bhp range shown in current market snapshot.
+
+Efficiency fact — BE 6 — Electric range depends on battery/test cycle.
+
+Dimension fact — BE 6 — Approx. 4,371 x 1,907 x 1,627 mm; wheelbase 2,775 mm.
+
+Price fact — BE 6 — ₹22.92 lakh cited for BE 6 Sporteq in an August 2026 market snapshot.
+
+Model fact — XEV 9e — manufacturer: Mahindra & Mahindra Limited — category: Electric SUV/coupe.
+
+Powertrain fact — XEV 9e — 59 kWh or 79 kWh battery.
+
+Output fact — XEV 9e — Variant dependent.
+
+Efficiency fact — XEV 9e — 79 kWh version claimed at 656 km range.
+
+Dimension fact — XEV 9e — Approx. 4,790 x 1,905 x 1,690 mm; wheelbase 2,775 mm.
+
+Price fact — XEV 9e — ₹21.9 lakh starting in an August 2026 market snapshot.
+
+
+### 19. RAG evaluation question bank
+
+RAG RECORD 001
+QUESTION: What type of vehicle is the Thar?
+ANSWER: Thar is described in this dataset as a Off-road SUV.
+RETRIEVAL NOTE: Preserve the company, reporting period, market, unit and metric definition when returning this answer.
+
+RAG RECORD 002
+QUESTION: What powertrain is recorded for the Thar?
+ANSWER: The recorded powertrain is Petrol/diesel depending on version.
+RETRIEVAL NOTE: Preserve the company, reporting period, market, unit and metric definition when returning this answer.
+
+RAG RECORD 003
+QUESTION: What performance figure is recorded for the Thar?
+ANSWER: The representative output is 117–150 bhp range shown in current market snapshot.
+RETRIEVAL NOTE: Preserve the company, reporting period, market, unit and metric definition when returning this answer.
+
+RAG RECORD 004
+QUESTION: What mileage information is recorded for the Thar?
+ANSWER: The recorded efficiency reference is 12–15 km/l range shown in current market snapshot.
+RETRIEVAL NOTE: Preserve the company, reporting period, market, unit and metric definition when returning this answer.
+
+RAG RECORD 005
+QUESTION: What dimensions are recorded for the Thar?
+ANSWER: The recorded dimension reference is Approx. 3,985 x 1,820 x 1,920 mm; wheelbase 2,450 mm.
+RETRIEVAL NOTE: Preserve the company, reporting period, market, unit and metric definition when returning this answer.
+
+RAG RECORD 006
+QUESTION: What price information is recorded for the Thar?
+ANSWER: The current dated market snapshot is ₹12.05 lakh starting in an August 2026 market snapshot.
+RETRIEVAL NOTE: Preserve the company, reporting period, market, unit and metric definition when returning this answer.
+
+RAG RECORD 007
+QUESTION: Is the Thar price universal worldwide?
+ANSWER: No. It is a dated India-market reference and varies by market, trim, tax and model year.
+RETRIEVAL NOTE: Preserve the company, reporting period, market, unit and metric definition when returning this answer.
+
+RAG RECORD 008
+QUESTION: Should the Thar mileage be treated as real-world fuel consumption?
+ANSWER: No. It should be treated as the cited claimed/test-cycle reference unless a source explicitly states otherwise.
+RETRIEVAL NOTE: Preserve the company, reporting period, market, unit and metric definition when returning this answer.
+
+RAG RECORD 009
+QUESTION: What type of vehicle is the Thar Roxx?
+ANSWER: Thar Roxx is described in this dataset as a Five-door SUV.
+RETRIEVAL NOTE: Preserve the company, reporting period, market, unit and metric definition when returning this answer.
+
+RAG RECORD 010
+QUESTION: What powertrain is recorded for the Thar Roxx?
+ANSWER: The recorded powertrain is Petrol/diesel.
+RETRIEVAL NOTE: Preserve the company, reporting period, market, unit and metric definition when returning this answer.
+
+RAG RECORD 011
+QUESTION: What performance figure is recorded for the Thar Roxx?
+ANSWER: The representative output is 150–174 bhp range shown in current market snapshot.
+RETRIEVAL NOTE: Preserve the company, reporting period, market, unit and metric definition when returning this answer.
+
+RAG RECORD 012
+QUESTION: What mileage information is recorded for the Thar Roxx?
+ANSWER: The recorded efficiency reference is 12–15 km/l range shown in current market snapshot.
+RETRIEVAL NOTE: Preserve the company, reporting period, market, unit and metric definition when returning this answer.
+
+RAG RECORD 013
+QUESTION: What dimensions are recorded for the Thar Roxx?
+ANSWER: The recorded dimension reference is Approx. 4,428 x 1,870 x 1,923 mm; wheelbase 2,850 mm.
+RETRIEVAL NOTE: Preserve the company, reporting period, market, unit and metric definition when returning this answer.
+
+RAG RECORD 014
+QUESTION: What price information is recorded for the Thar Roxx?
+ANSWER: The current dated market snapshot is ₹14.77 lakh starting in an August 2026 market snapshot.
+RETRIEVAL NOTE: Preserve the company, reporting period, market, unit and metric definition when returning this answer.
+
+RAG RECORD 015
+QUESTION: Is the Thar Roxx price universal worldwide?
+ANSWER: No. It is a dated India-market reference and varies by market, trim, tax and model year.
+RETRIEVAL NOTE: Preserve the company, reporting period, market, unit and metric definition when returning this answer.
+
+RAG RECORD 016
+QUESTION: Should the Thar Roxx mileage be treated as real-world fuel consumption?
+ANSWER: No. It should be treated as the cited claimed/test-cycle reference unless a source explicitly states otherwise.
+RETRIEVAL NOTE: Preserve the company, reporting period, market, unit and metric definition when returning this answer.
+
+RAG RECORD 017
+QUESTION: What type of vehicle is the Scorpio N?
+ANSWER: Scorpio N is described in this dataset as a Three-row SUV.
+RETRIEVAL NOTE: Preserve the company, reporting period, market, unit and metric definition when returning this answer.
+
+RAG RECORD 018
+QUESTION: What powertrain is recorded for the Scorpio N?
+ANSWER: The recorded powertrain is 2.0L turbo petrol / 2.2L diesel.
+RETRIEVAL NOTE: Preserve the company, reporting period, market, unit and metric definition when returning this answer.
+
+RAG RECORD 019
+QUESTION: What performance figure is recorded for the Scorpio N?
+ANSWER: The representative output is 130–200 bhp range shown in current market snapshot.
+RETRIEVAL NOTE: Preserve the company, reporting period, market, unit and metric definition when returning this answer.
+
+RAG RECORD 020
+QUESTION: What mileage information is recorded for the Scorpio N?
+ANSWER: The recorded efficiency reference is Variant dependent.
+RETRIEVAL NOTE: Preserve the company, reporting period, market, unit and metric definition when returning this answer.
+
+RAG RECORD 021
+QUESTION: What dimensions are recorded for the Scorpio N?
+ANSWER: The recorded dimension reference is Approx. 4,662 x 1,917 x 1,870 mm; wheelbase 2,750 mm.
+RETRIEVAL NOTE: Preserve the company, reporting period, market, unit and metric definition when returning this answer.
+
+RAG RECORD 022
+QUESTION: What price information is recorded for the Scorpio N?
+ANSWER: The current dated market snapshot is ₹13.69 lakh starting in an August 2026 market snapshot.
+RETRIEVAL NOTE: Preserve the company, reporting period, market, unit and metric definition when returning this answer.
+
+RAG RECORD 023
+QUESTION: Is the Scorpio N price universal worldwide?
+ANSWER: No. It is a dated India-market reference and varies by market, trim, tax and model year.
+RETRIEVAL NOTE: Preserve the company, reporting period, market, unit and metric definition when returning this answer.
+
+RAG RECORD 024
+QUESTION: Should the Scorpio N mileage be treated as real-world fuel consumption?
+ANSWER: No. It should be treated as the cited claimed/test-cycle reference unless a source explicitly states otherwise.
+RETRIEVAL NOTE: Preserve the company, reporting period, market, unit and metric definition when returning this answer.
+
+RAG RECORD 025
+QUESTION: What type of vehicle is the BE 6?
+ANSWER: BE 6 is described in this dataset as a Electric SUV.
+RETRIEVAL NOTE: Preserve the company, reporting period, market, unit and metric definition when returning this answer.
+
+RAG RECORD 026
+QUESTION: What powertrain is recorded for the BE 6?
+ANSWER: The recorded powertrain is Battery electric.
+RETRIEVAL NOTE: Preserve the company, reporting period, market, unit and metric definition when returning this answer.
+
+RAG RECORD 027
+QUESTION: What performance figure is recorded for the BE 6?
+ANSWER: The representative output is 228–282 bhp range shown in current market snapshot.
+RETRIEVAL NOTE: Preserve the company, reporting period, market, unit and metric definition when returning this answer.
+
+RAG RECORD 028
+QUESTION: What mileage information is recorded for the BE 6?
+ANSWER: The recorded efficiency reference is Electric range depends on battery/test cycle.
+RETRIEVAL NOTE: Preserve the company, reporting period, market, unit and metric definition when returning this answer.
+
+RAG RECORD 029
+QUESTION: What dimensions are recorded for the BE 6?
+ANSWER: The recorded dimension reference is Approx. 4,371 x 1,907 x 1,627 mm; wheelbase 2,775 mm.
+RETRIEVAL NOTE: Preserve the company, reporting period, market, unit and metric definition when returning this answer.
+
+RAG RECORD 030
+QUESTION: What price information is recorded for the BE 6?
+ANSWER: The current dated market snapshot is ₹22.92 lakh cited for BE 6 Sporteq in an August 2026 market snapshot.
+RETRIEVAL NOTE: Preserve the company, reporting period, market, unit and metric definition when returning this answer.
+
+RAG RECORD 031
+QUESTION: Is the BE 6 price universal worldwide?
+ANSWER: No. It is a dated India-market reference and varies by market, trim, tax and model year.
+RETRIEVAL NOTE: Preserve the company, reporting period, market, unit and metric definition when returning this answer.
+
+RAG RECORD 032
+QUESTION: Should the BE 6 mileage be treated as real-world fuel consumption?
+ANSWER: No. It should be treated as the cited claimed/test-cycle reference unless a source explicitly states otherwise.
+RETRIEVAL NOTE: Preserve the company, reporting period, market, unit and metric definition when returning this answer.
+
+RAG RECORD 033
+QUESTION: What type of vehicle is the XEV 9e?
+ANSWER: XEV 9e is described in this dataset as a Electric SUV/coupe.
+RETRIEVAL NOTE: Preserve the company, reporting period, market, unit and metric definition when returning this answer.
+
+RAG RECORD 034
+QUESTION: What powertrain is recorded for the XEV 9e?
+ANSWER: The recorded powertrain is 59 kWh or 79 kWh battery.
+RETRIEVAL NOTE: Preserve the company, reporting period, market, unit and metric definition when returning this answer.
+
+RAG RECORD 035
+QUESTION: What performance figure is recorded for the XEV 9e?
+ANSWER: The representative output is Variant dependent.
+RETRIEVAL NOTE: Preserve the company, reporting period, market, unit and metric definition when returning this answer.
+
+RAG RECORD 036
+QUESTION: What mileage information is recorded for the XEV 9e?
+ANSWER: The recorded efficiency reference is 79 kWh version claimed at 656 km range.
+RETRIEVAL NOTE: Preserve the company, reporting period, market, unit and metric definition when returning this answer.
+
+RAG RECORD 037
+QUESTION: What dimensions are recorded for the XEV 9e?
+ANSWER: The recorded dimension reference is Approx. 4,790 x 1,905 x 1,690 mm; wheelbase 2,775 mm.
+RETRIEVAL NOTE: Preserve the company, reporting period, market, unit and metric definition when returning this answer.
+
+RAG RECORD 038
+QUESTION: What price information is recorded for the XEV 9e?
+ANSWER: The current dated market snapshot is ₹21.9 lakh starting in an August 2026 market snapshot.
+RETRIEVAL NOTE: Preserve the company, reporting period, market, unit and metric definition when returning this answer.
+
+RAG RECORD 039
+QUESTION: Is the XEV 9e price universal worldwide?
+ANSWER: No. It is a dated India-market reference and varies by market, trim, tax and model year.
+RETRIEVAL NOTE: Preserve the company, reporting period, market, unit and metric definition when returning this answer.
+
+RAG RECORD 040
+QUESTION: Should the XEV 9e mileage be treated as real-world fuel consumption?
+ANSWER: No. It should be treated as the cited claimed/test-cycle reference unless a source explicitly states otherwise.
+RETRIEVAL NOTE: Preserve the company, reporting period, market, unit and metric definition when returning this answer.
+
+RAG RECORD 041
+QUESTION: What is the main sales period used for this company?
+ANSWER: The main sales period is FY2025 (year ended March 31, 2025).
+RETRIEVAL NOTE: Preserve the company, reporting period, market, unit and metric definition when returning this answer.
+
+RAG RECORD 042
+QUESTION: What is the headline vehicle-volume figure?
+ANSWER: The headline figure is 941,115 vehicles sold by the Company; 424,641 tractors; 1.37 million vehicles and tractors globally across Automotive and Farm sectors and subsidiaries/JVs.
+RETRIEVAL NOTE: Preserve the company, reporting period, market, unit and metric definition when returning this answer.
+
+RAG RECORD 043
+QUESTION: What are the reported regional sales figures?
+ANSWER: The regional figures are India: primary automotive and tractor market; Exports: included in company vehicle/tractor sales; Global subsidiaries/JVs: included in the broader 1.37 million global sales figure.
+RETRIEVAL NOTE: Preserve the company, reporting period, market, unit and metric definition when returning this answer.
+
+RAG RECORD 044
+QUESTION: Why must sales and production be distinguished?
+ANSWER: They are different measures: sales describe vehicles sold or delivered, while production describes vehicles manufactured.
+RETRIEVAL NOTE: Preserve the company, reporting period, market, unit and metric definition when returning this answer.
+
+RAG RECORD 045
+QUESTION: Why should wholesale and retail sales not be mixed?
+ANSWER: They represent different points in the distribution chain and can therefore produce different totals.
+RETRIEVAL NOTE: Preserve the company, reporting period, market, unit and metric definition when returning this answer.
+
+RAG RECORD 046
+QUESTION: Why are model prices dated?
+ANSWER: Automotive prices change with model years, variants, taxes, offers and market conditions.
+RETRIEVAL NOTE: Preserve the company, reporting period, market, unit and metric definition when returning this answer.
+
+RAG RECORD 047
+QUESTION: Why should model specifications include the market?
+ANSWER: A model can have different engines, dimensions, features and pricing in different countries.
+RETRIEVAL NOTE: Preserve the company, reporting period, market, unit and metric definition when returning this answer.
+
+RAG RECORD 048
+QUESTION: What electrification information is available?
+ANSWER: Mahindra's EV strategy expanded with dedicated electric SUVs such as BE 6 and XEV 9e, while the company continued ICE SUVs and commercial vehicles.
+RETRIEVAL NOTE: Preserve the company, reporting period, market, unit and metric definition when returning this answer.
+
+RAG RECORD 049
+QUESTION: What financial information is included?
+ANSWER: Mahindra FY25 reporting highlights 14.1% year-on-year growth in vehicle volume and 12.2% growth in tractor volume.
+RETRIEVAL NOTE: Preserve the company, reporting period, market, unit and metric definition when returning this answer.
+
+RAG RECORD 050
+QUESTION: How should a RAG system store regional sales?
+ANSWER: Store company, year, region, metric type, unit, value and source as metadata.
+RETRIEVAL NOTE: Preserve the company, reporting period, market, unit and metric definition when returning this answer.
+
+RAG RECORD 051
+QUESTION: How should a RAG system store model price?
+ANSWER: Store model, market, currency, price basis, date, variant and source.
+RETRIEVAL NOTE: Preserve the company, reporting period, market, unit and metric definition when returning this answer.
+
+RAG RECORD 052
+QUESTION: What should happen when a specification is market dependent?
+ANSWER: The answer should say that it is market or variant dependent instead of inventing a universal value.
+RETRIEVAL NOTE: Preserve the company, reporting period, market, unit and metric definition when returning this answer.
+
+RAG RECORD 053
+QUESTION: What are useful RAG questions for this document?
+ANSWER: Questions about sales, regions, models, powertrains, efficiency, dimensions, prices, safety, EVs, manufacturing and finance are useful.
+RETRIEVAL NOTE: Preserve the company, reporting period, market, unit and metric definition when returning this answer.
+
+RAG RECORD 054
+QUESTION: Can the largest sales region be determined?
+ANSWER: Yes, by comparing the regional values after confirming they use the same metric and period.
+RETRIEVAL NOTE: Preserve the company, reporting period, market, unit and metric definition when returning this answer.
+
+RAG RECORD 055
+QUESTION: Can global sales be compared with another company?
+ANSWER: Yes, if the reporting period, sales definition and scope are aligned.
+RETRIEVAL NOTE: Preserve the company, reporting period, market, unit and metric definition when returning this answer.
+
+RAG RECORD 056
+QUESTION: What type of vehicle is the Thar?
+ANSWER: Thar is described in this dataset as a Off-road SUV.
+RETRIEVAL NOTE: Preserve the company, reporting period, market, unit and metric definition when returning this answer.
+
+RAG RECORD 057
+QUESTION: What powertrain is recorded for the Thar?
+ANSWER: The recorded powertrain is Petrol/diesel depending on version.
+RETRIEVAL NOTE: Preserve the company, reporting period, market, unit and metric definition when returning this answer.
+
+RAG RECORD 058
+QUESTION: What performance figure is recorded for the Thar?
+ANSWER: The representative output is 117–150 bhp range shown in current market snapshot.
+RETRIEVAL NOTE: Preserve the company, reporting period, market, unit and metric definition when returning this answer.
+
+RAG RECORD 059
+QUESTION: What mileage information is recorded for the Thar?
+ANSWER: The recorded efficiency reference is 12–15 km/l range shown in current market snapshot.
+RETRIEVAL NOTE: Preserve the company, reporting period, market, unit and metric definition when returning this answer.
+
+RAG RECORD 060
+QUESTION: What dimensions are recorded for the Thar?
+ANSWER: The recorded dimension reference is Approx. 3,985 x 1,820 x 1,920 mm; wheelbase 2,450 mm.
+RETRIEVAL NOTE: Preserve the company, reporting period, market, unit and metric definition when returning this answer.
+
+RAG RECORD 061
+QUESTION: What price information is recorded for the Thar?
+ANSWER: The current dated market snapshot is ₹12.05 lakh starting in an August 2026 market snapshot.
+RETRIEVAL NOTE: Preserve the company, reporting period, market, unit and metric definition when returning this answer.
+
+RAG RECORD 062
+QUESTION: Is the Thar price universal worldwide?
+ANSWER: No. It is a dated India-market reference and varies by market, trim, tax and model year.
+RETRIEVAL NOTE: Preserve the company, reporting period, market, unit and metric definition when returning this answer.
+
+RAG RECORD 063
+QUESTION: Should the Thar mileage be treated as real-world fuel consumption?
+ANSWER: No. It should be treated as the cited claimed/test-cycle reference unless a source explicitly states otherwise.
+RETRIEVAL NOTE: Preserve the company, reporting period, market, unit and metric definition when returning this answer.
+
+RAG RECORD 064
+QUESTION: What type of vehicle is the Thar Roxx?
+ANSWER: Thar Roxx is described in this dataset as a Five-door SUV.
+RETRIEVAL NOTE: Preserve the company, reporting period, market, unit and metric definition when returning this answer.
+
+RAG RECORD 065
+QUESTION: What powertrain is recorded for the Thar Roxx?
+ANSWER: The recorded powertrain is Petrol/diesel.
+RETRIEVAL NOTE: Preserve the company, reporting period, market, unit and metric definition when returning this answer.
+
+RAG RECORD 066
+QUESTION: What performance figure is recorded for the Thar Roxx?
+ANSWER: The representative output is 150–174 bhp range shown in current market snapshot.
+RETRIEVAL NOTE: Preserve the company, reporting period, market, unit and metric definition when returning this answer.
+
+RAG RECORD 067
+QUESTION: What mileage information is recorded for the Thar Roxx?
+ANSWER: The recorded efficiency reference is 12–15 km/l range shown in current market snapshot.
+RETRIEVAL NOTE: Preserve the company, reporting period, market, unit and metric definition when returning this answer.
+
+RAG RECORD 068
+QUESTION: What dimensions are recorded for the Thar Roxx?
+ANSWER: The recorded dimension reference is Approx. 4,428 x 1,870 x 1,923 mm; wheelbase 2,850 mm.
+RETRIEVAL NOTE: Preserve the company, reporting period, market, unit and metric definition when returning this answer.
+
+RAG RECORD 069
+QUESTION: What price information is recorded for the Thar Roxx?
+ANSWER: The current dated market snapshot is ₹14.77 lakh starting in an August 2026 market snapshot.
+RETRIEVAL NOTE: Preserve the company, reporting period, market, unit and metric definition when returning this answer.
+
+RAG RECORD 070
+QUESTION: Is the Thar Roxx price universal worldwide?
+ANSWER: No. It is a dated India-market reference and varies by market, trim, tax and model year.
+RETRIEVAL NOTE: Preserve the company, reporting period, market, unit and metric definition when returning this answer.
+
+RAG RECORD 071
+QUESTION: Should the Thar Roxx mileage be treated as real-world fuel consumption?
+ANSWER: No. It should be treated as the cited claimed/test-cycle reference unless a source explicitly states otherwise.
+RETRIEVAL NOTE: Preserve the company, reporting period, market, unit and metric definition when returning this answer.
+
+RAG RECORD 072
+QUESTION: What type of vehicle is the Scorpio N?
+ANSWER: Scorpio N is described in this dataset as a Three-row SUV.
+RETRIEVAL NOTE: Preserve the company, reporting period, market, unit and metric definition when returning this answer.
+
+RAG RECORD 073
+QUESTION: What powertrain is recorded for the Scorpio N?
+ANSWER: The recorded powertrain is 2.0L turbo petrol / 2.2L diesel.
+RETRIEVAL NOTE: Preserve the company, reporting period, market, unit and metric definition when returning this answer.
+
+RAG RECORD 074
+QUESTION: What performance figure is recorded for the Scorpio N?
+ANSWER: The representative output is 130–200 bhp range shown in current market snapshot.
+RETRIEVAL NOTE: Preserve the company, reporting period, market, unit and metric definition when returning this answer.
+
+RAG RECORD 075
+QUESTION: What mileage information is recorded for the Scorpio N?
+ANSWER: The recorded efficiency reference is Variant dependent.
+RETRIEVAL NOTE: Preserve the company, reporting period, market, unit and metric definition when returning this answer.
+
+RAG RECORD 076
+QUESTION: What dimensions are recorded for the Scorpio N?
+ANSWER: The recorded dimension reference is Approx. 4,662 x 1,917 x 1,870 mm; wheelbase 2,750 mm.
+RETRIEVAL NOTE: Preserve the company, reporting period, market, unit and metric definition when returning this answer.
+
+RAG RECORD 077
+QUESTION: What price information is recorded for the Scorpio N?
+ANSWER: The current dated market snapshot is ₹13.69 lakh starting in an August 2026 market snapshot.
+RETRIEVAL NOTE: Preserve the company, reporting period, market, unit and metric definition when returning this answer.
+
+RAG RECORD 078
+QUESTION: Is the Scorpio N price universal worldwide?
+ANSWER: No. It is a dated India-market reference and varies by market, trim, tax and model year.
+RETRIEVAL NOTE: Preserve the company, reporting period, market, unit and metric definition when returning this answer.
+
+RAG RECORD 079
+QUESTION: Should the Scorpio N mileage be treated as real-world fuel consumption?
+ANSWER: No. It should be treated as the cited claimed/test-cycle reference unless a source explicitly states otherwise.
+RETRIEVAL NOTE: Preserve the company, reporting period, market, unit and metric definition when returning this answer.
+
+RAG RECORD 080
+QUESTION: What type of vehicle is the BE 6?
+ANSWER: BE 6 is described in this dataset as a Electric SUV.
+RETRIEVAL NOTE: Preserve the company, reporting period, market, unit and metric definition when returning this answer.
+
+RAG RECORD 081
+QUESTION: What powertrain is recorded for the BE 6?
+ANSWER: The recorded powertrain is Battery electric.
+RETRIEVAL NOTE: Preserve the company, reporting period, market, unit and metric definition when returning this answer.
+
+RAG RECORD 082
+QUESTION: What performance figure is recorded for the BE 6?
+ANSWER: The representative output is 228–282 bhp range shown in current market snapshot.
+RETRIEVAL NOTE: Preserve the company, reporting period, market, unit and metric definition when returning this answer.
+
+RAG RECORD 083
+QUESTION: What mileage information is recorded for the BE 6?
+ANSWER: The recorded efficiency reference is Electric range depends on battery/test cycle.
+RETRIEVAL NOTE: Preserve the company, reporting period, market, unit and metric definition when returning this answer.
+
+RAG RECORD 084
+QUESTION: What dimensions are recorded for the BE 6?
+ANSWER: The recorded dimension reference is Approx. 4,371 x 1,907 x 1,627 mm; wheelbase 2,775 mm.
+RETRIEVAL NOTE: Preserve the company, reporting period, market, unit and metric definition when returning this answer.
+
+RAG RECORD 085
+QUESTION: What price information is recorded for the BE 6?
+ANSWER: The current dated market snapshot is ₹22.92 lakh cited for BE 6 Sporteq in an August 2026 market snapshot.
+RETRIEVAL NOTE: Preserve the company, reporting period, market, unit and metric definition when returning this answer.
+
+RAG RECORD 086
+QUESTION: Is the BE 6 price universal worldwide?
+ANSWER: No. It is a dated India-market reference and varies by market, trim, tax and model year.
+RETRIEVAL NOTE: Preserve the company, reporting period, market, unit and metric definition when returning this answer.
+
+RAG RECORD 087
+QUESTION: Should the BE 6 mileage be treated as real-world fuel consumption?
+ANSWER: No. It should be treated as the cited claimed/test-cycle reference unless a source explicitly states otherwise.
+RETRIEVAL NOTE: Preserve the company, reporting period, market, unit and metric definition when returning this answer.
+
+RAG RECORD 088
+QUESTION: What type of vehicle is the XEV 9e?
+ANSWER: XEV 9e is described in this dataset as a Electric SUV/coupe.
+RETRIEVAL NOTE: Preserve the company, reporting period, market, unit and metric definition when returning this answer.
+
+RAG RECORD 089
+QUESTION: What powertrain is recorded for the XEV 9e?
+ANSWER: The recorded powertrain is 59 kWh or 79 kWh battery.
+RETRIEVAL NOTE: Preserve the company, reporting period, market, unit and metric definition when returning this answer.
+
+RAG RECORD 090
+QUESTION: What performance figure is recorded for the XEV 9e?
+ANSWER: The representative output is Variant dependent.
+RETRIEVAL NOTE: Preserve the company, reporting period, market, unit and metric definition when returning this answer.
+
+RAG RECORD 091
+QUESTION: What mileage information is recorded for the XEV 9e?
+ANSWER: The recorded efficiency reference is 79 kWh version claimed at 656 km range.
+RETRIEVAL NOTE: Preserve the company, reporting period, market, unit and metric definition when returning this answer.
+
+RAG RECORD 092
+QUESTION: What dimensions are recorded for the XEV 9e?
+ANSWER: The recorded dimension reference is Approx. 4,790 x 1,905 x 1,690 mm; wheelbase 2,775 mm.
+RETRIEVAL NOTE: Preserve the company, reporting period, market, unit and metric definition when returning this answer.
+
+RAG RECORD 093
+QUESTION: What price information is recorded for the XEV 9e?
+ANSWER: The current dated market snapshot is ₹21.9 lakh starting in an August 2026 market snapshot.
+RETRIEVAL NOTE: Preserve the company, reporting period, market, unit and metric definition when returning this answer.
+
+RAG RECORD 094
+QUESTION: Is the XEV 9e price universal worldwide?
+ANSWER: No. It is a dated India-market reference and varies by market, trim, tax and model year.
+RETRIEVAL NOTE: Preserve the company, reporting period, market, unit and metric definition when returning this answer.
+
+RAG RECORD 095
+QUESTION: Should the XEV 9e mileage be treated as real-world fuel consumption?
+ANSWER: No. It should be treated as the cited claimed/test-cycle reference unless a source explicitly states otherwise.
+RETRIEVAL NOTE: Preserve the company, reporting period, market, unit and metric definition when returning this answer.
+
+RAG RECORD 096
+QUESTION: What is the main sales period used for this company?
+ANSWER: The main sales period is FY2025 (year ended March 31, 2025).
+RETRIEVAL NOTE: Preserve the company, reporting period, market, unit and metric definition when returning this answer.
+
+RAG RECORD 097
+QUESTION: What is the headline vehicle-volume figure?
+ANSWER: The headline figure is 941,115 vehicles sold by the Company; 424,641 tractors; 1.37 million vehicles and tractors globally across Automotive and Farm sectors and subsidiaries/JVs.
+RETRIEVAL NOTE: Preserve the company, reporting period, market, unit and metric definition when returning this answer.
+
+RAG RECORD 098
+QUESTION: What are the reported regional sales figures?
+ANSWER: The regional figures are India: primary automotive and tractor market; Exports: included in company vehicle/tractor sales; Global subsidiaries/JVs: included in the broader 1.37 million global sales figure.
+RETRIEVAL NOTE: Preserve the company, reporting period, market, unit and metric definition when returning this answer.
+
+RAG RECORD 099
+QUESTION: Why must sales and production be distinguished?
+ANSWER: They are different measures: sales describe vehicles sold or delivered, while production describes vehicles manufactured.
+RETRIEVAL NOTE: Preserve the company, reporting period, market, unit and metric definition when returning this answer.
+
+RAG RECORD 100
+QUESTION: Why should wholesale and retail sales not be mixed?
+ANSWER: They represent different points in the distribution chain and can therefore produce different totals.
+RETRIEVAL NOTE: Preserve the company, reporting period, market, unit and metric definition when returning this answer.
+
+RAG RECORD 101
+QUESTION: Why are model prices dated?
+ANSWER: Automotive prices change with model years, variants, taxes, offers and market conditions.
+RETRIEVAL NOTE: Preserve the company, reporting period, market, unit and metric definition when returning this answer.
+
+RAG RECORD 102
+QUESTION: Why should model specifications include the market?
+ANSWER: A model can have different engines, dimensions, features and pricing in different countries.
+RETRIEVAL NOTE: Preserve the company, reporting period, market, unit and metric definition when returning this answer.
+
+RAG RECORD 103
+QUESTION: What electrification information is available?
+ANSWER: Mahindra's EV strategy expanded with dedicated electric SUVs such as BE 6 and XEV 9e, while the company continued ICE SUVs and commercial vehicles.
+RETRIEVAL NOTE: Preserve the company, reporting period, market, unit and metric definition when returning this answer.
+
+RAG RECORD 104
+QUESTION: What financial information is included?
+ANSWER: Mahindra FY25 reporting highlights 14.1% year-on-year growth in vehicle volume and 12.2% growth in tractor volume.
+RETRIEVAL NOTE: Preserve the company, reporting period, market, unit and metric definition when returning this answer.
+
+RAG RECORD 105
+QUESTION: How should a RAG system store regional sales?
+ANSWER: Store company, year, region, metric type, unit, value and source as metadata.
+RETRIEVAL NOTE: Preserve the company, reporting period, market, unit and metric definition when returning this answer.
+
+RAG RECORD 106
+QUESTION: How should a RAG system store model price?
+ANSWER: Store model, market, currency, price basis, date, variant and source.
+RETRIEVAL NOTE: Preserve the company, reporting period, market, unit and metric definition when returning this answer.
+
+RAG RECORD 107
+QUESTION: What should happen when a specification is market dependent?
+ANSWER: The answer should say that it is market or variant dependent instead of inventing a universal value.
+RETRIEVAL NOTE: Preserve the company, reporting period, market, unit and metric definition when returning this answer.
+
+RAG RECORD 108
+QUESTION: What are useful RAG questions for this document?
+ANSWER: Questions about sales, regions, models, powertrains, efficiency, dimensions, prices, safety, EVs, manufacturing and finance are useful.
+RETRIEVAL NOTE: Preserve the company, reporting period, market, unit and metric definition when returning this answer.
+
+RAG RECORD 109
+QUESTION: Can the largest sales region be determined?
+ANSWER: Yes, by comparing the regional values after confirming they use the same metric and period.
+RETRIEVAL NOTE: Preserve the company, reporting period, market, unit and metric definition when returning this answer.
+
+RAG RECORD 110
+QUESTION: Can global sales be compared with another company?
+ANSWER: Yes, if the reporting period, sales definition and scope are aligned.
+RETRIEVAL NOTE: Preserve the company, reporting period, market, unit and metric definition when returning this answer.
+
+RAG RECORD 111
+QUESTION: What type of vehicle is the Thar?
+ANSWER: Thar is described in this dataset as a Off-road SUV.
+RETRIEVAL NOTE: Preserve the company, reporting period, market, unit and metric definition when returning this answer.
+
+RAG RECORD 112
+QUESTION: What powertrain is recorded for the Thar?
+ANSWER: The recorded powertrain is Petrol/diesel depending on version.
+RETRIEVAL NOTE: Preserve the company, reporting period, market, unit and metric definition when returning this answer.
+
+RAG RECORD 113
+QUESTION: What performance figure is recorded for the Thar?
+ANSWER: The representative output is 117–150 bhp range shown in current market snapshot.
+RETRIEVAL NOTE: Preserve the company, reporting period, market, unit and metric definition when returning this answer.
+
+RAG RECORD 114
+QUESTION: What mileage information is recorded for the Thar?
+ANSWER: The recorded efficiency reference is 12–15 km/l range shown in current market snapshot.
+RETRIEVAL NOTE: Preserve the company, reporting period, market, unit and metric definition when returning this answer.
+
+RAG RECORD 115
+QUESTION: What dimensions are recorded for the Thar?
+ANSWER: The recorded dimension reference is Approx. 3,985 x 1,820 x 1,920 mm; wheelbase 2,450 mm.
+RETRIEVAL NOTE: Preserve the company, reporting period, market, unit and metric definition when returning this answer.
+
+RAG RECORD 116
+QUESTION: What price information is recorded for the Thar?
+ANSWER: The current dated market snapshot is ₹12.05 lakh starting in an August 2026 market snapshot.
+RETRIEVAL NOTE: Preserve the company, reporting period, market, unit and metric definition when returning this answer.
+
+RAG RECORD 117
+QUESTION: Is the Thar price universal worldwide?
+ANSWER: No. It is a dated India-market reference and varies by market, trim, tax and model year.
+RETRIEVAL NOTE: Preserve the company, reporting period, market, unit and metric definition when returning this answer.
+
+RAG RECORD 118
+QUESTION: Should the Thar mileage be treated as real-world fuel consumption?
+ANSWER: No. It should be treated as the cited claimed/test-cycle reference unless a source explicitly states otherwise.
+RETRIEVAL NOTE: Preserve the company, reporting period, market, unit and metric definition when returning this answer.
+
+RAG RECORD 119
+QUESTION: What type of vehicle is the Thar Roxx?
+ANSWER: Thar Roxx is described in this dataset as a Five-door SUV.
+RETRIEVAL NOTE: Preserve the company, reporting period, market, unit and metric definition when returning this answer.
+
+RAG RECORD 120
+QUESTION: What powertrain is recorded for the Thar Roxx?
+ANSWER: The recorded powertrain is Petrol/diesel.
+RETRIEVAL NOTE: Preserve the company, reporting period, market, unit and metric definition when returning this answer.
+
+RAG RECORD 121
+QUESTION: What performance figure is recorded for the Thar Roxx?
+ANSWER: The representative output is 150–174 bhp range shown in current market snapshot.
+RETRIEVAL NOTE: Preserve the company, reporting period, market, unit and metric definition when returning this answer.
+
+RAG RECORD 122
+QUESTION: What mileage information is recorded for the Thar Roxx?
+ANSWER: The recorded efficiency reference is 12–15 km/l range shown in current market snapshot.
+RETRIEVAL NOTE: Preserve the company, reporting period, market, unit and metric definition when returning this answer.
+
+RAG RECORD 123
+QUESTION: What dimensions are recorded for the Thar Roxx?
+ANSWER: The recorded dimension reference is Approx. 4,428 x 1,870 x 1,923 mm; wheelbase 2,850 mm.
+RETRIEVAL NOTE: Preserve the company, reporting period, market, unit and metric definition when returning this answer.
+
+RAG RECORD 124
+QUESTION: What price information is recorded for the Thar Roxx?
+ANSWER: The current dated market snapshot is ₹14.77 lakh starting in an August 2026 market snapshot.
+RETRIEVAL NOTE: Preserve the company, reporting period, market, unit and metric definition when returning this answer.
+
+RAG RECORD 125
+QUESTION: Is the Thar Roxx price universal worldwide?
+ANSWER: No. It is a dated India-market reference and varies by market, trim, tax and model year.
+RETRIEVAL NOTE: Preserve the company, reporting period, market, unit and metric definition when returning this answer.
+
+RAG RECORD 126
+QUESTION: Should the Thar Roxx mileage be treated as real-world fuel consumption?
+ANSWER: No. It should be treated as the cited claimed/test-cycle reference unless a source explicitly states otherwise.
+RETRIEVAL NOTE: Preserve the company, reporting period, market, unit and metric definition when returning this answer.
+
+RAG RECORD 127
+QUESTION: What type of vehicle is the Scorpio N?
+ANSWER: Scorpio N is described in this dataset as a Three-row SUV.
+RETRIEVAL NOTE: Preserve the company, reporting period, market, unit and metric definition when returning this answer.
+
+RAG RECORD 128
+QUESTION: What powertrain is recorded for the Scorpio N?
+ANSWER: The recorded powertrain is 2.0L turbo petrol / 2.2L diesel.
+RETRIEVAL NOTE: Preserve the company, reporting period, market, unit and metric definition when returning this answer.
+
+RAG RECORD 129
+QUESTION: What performance figure is recorded for the Scorpio N?
+ANSWER: The representative output is 130–200 bhp range shown in current market snapshot.
+RETRIEVAL NOTE: Preserve the company, reporting period, market, unit and metric definition when returning this answer.
+
+RAG RECORD 130
+QUESTION: What mileage information is recorded for the Scorpio N?
+ANSWER: The recorded efficiency reference is Variant dependent.
+RETRIEVAL NOTE: Preserve the company, reporting period, market, unit and metric definition when returning this answer.
+
+RAG RECORD 131
+QUESTION: What dimensions are recorded for the Scorpio N?
+ANSWER: The recorded dimension reference is Approx. 4,662 x 1,917 x 1,870 mm; wheelbase 2,750 mm.
+RETRIEVAL NOTE: Preserve the company, reporting period, market, unit and metric definition when returning this answer.
+
+RAG RECORD 132
+QUESTION: What price information is recorded for the Scorpio N?
+ANSWER: The current dated market snapshot is ₹13.69 lakh starting in an August 2026 market snapshot.
+RETRIEVAL NOTE: Preserve the company, reporting period, market, unit and metric definition when returning this answer.
+
+RAG RECORD 133
+QUESTION: Is the Scorpio N price universal worldwide?
+ANSWER: No. It is a dated India-market reference and varies by market, trim, tax and model year.
+RETRIEVAL NOTE: Preserve the company, reporting period, market, unit and metric definition when returning this answer.
+
+RAG RECORD 134
+QUESTION: Should the Scorpio N mileage be treated as real-world fuel consumption?
+ANSWER: No. It should be treated as the cited claimed/test-cycle reference unless a source explicitly states otherwise.
+RETRIEVAL NOTE: Preserve the company, reporting period, market, unit and metric definition when returning this answer.
+
+RAG RECORD 135
+QUESTION: What type of vehicle is the BE 6?
+ANSWER: BE 6 is described in this dataset as a Electric SUV.
+RETRIEVAL NOTE: Preserve the company, reporting period, market, unit and metric definition when returning this answer.
+
+RAG RECORD 136
+QUESTION: What powertrain is recorded for the BE 6?
+ANSWER: The recorded powertrain is Battery electric.
+RETRIEVAL NOTE: Preserve the company, reporting period, market, unit and metric definition when returning this answer.
+
+RAG RECORD 137
+QUESTION: What performance figure is recorded for the BE 6?
+ANSWER: The representative output is 228–282 bhp range shown in current market snapshot.
+RETRIEVAL NOTE: Preserve the company, reporting period, market, unit and metric definition when returning this answer.
+
+RAG RECORD 138
+QUESTION: What mileage information is recorded for the BE 6?
+ANSWER: The recorded efficiency reference is Electric range depends on battery/test cycle.
+RETRIEVAL NOTE: Preserve the company, reporting period, market, unit and metric definition when returning this answer.
+
+RAG RECORD 139
+QUESTION: What dimensions are recorded for the BE 6?
+ANSWER: The recorded dimension reference is Approx. 4,371 x 1,907 x 1,627 mm; wheelbase 2,775 mm.
+RETRIEVAL NOTE: Preserve the company, reporting period, market, unit and metric definition when returning this answer.
+
+RAG RECORD 140
+QUESTION: What price information is recorded for the BE 6?
+ANSWER: The current dated market snapshot is ₹22.92 lakh cited for BE 6 Sporteq in an August 2026 market snapshot.
+RETRIEVAL NOTE: Preserve the company, reporting period, market, unit and metric definition when returning this answer.
+
+RAG RECORD 141
+QUESTION: Is the BE 6 price universal worldwide?
+ANSWER: No. It is a dated India-market reference and varies by market, trim, tax and model year.
+RETRIEVAL NOTE: Preserve the company, reporting period, market, unit and metric definition when returning this answer.
+
+RAG RECORD 142
+QUESTION: Should the BE 6 mileage be treated as real-world fuel consumption?
+ANSWER: No. It should be treated as the cited claimed/test-cycle reference unless a source explicitly states otherwise.
+RETRIEVAL NOTE: Preserve the company, reporting period, market, unit and metric definition when returning this answer.
+
+RAG RECORD 143
+QUESTION: What type of vehicle is the XEV 9e?
+ANSWER: XEV 9e is described in this dataset as a Electric SUV/coupe.
+RETRIEVAL NOTE: Preserve the company, reporting period, market, unit and metric definition when returning this answer.
+
+RAG RECORD 144
+QUESTION: What powertrain is recorded for the XEV 9e?
+ANSWER: The recorded powertrain is 59 kWh or 79 kWh battery.
+RETRIEVAL NOTE: Preserve the company, reporting period, market, unit and metric definition when returning this answer.
+
+RAG RECORD 145
+QUESTION: What performance figure is recorded for the XEV 9e?
+ANSWER: The representative output is Variant dependent.
+RETRIEVAL NOTE: Preserve the company, reporting period, market, unit and metric definition when returning this answer.
+
+RAG RECORD 146
+QUESTION: What mileage information is recorded for the XEV 9e?
+ANSWER: The recorded efficiency reference is 79 kWh version claimed at 656 km range.
+RETRIEVAL NOTE: Preserve the company, reporting period, market, unit and metric definition when returning this answer.
+
+RAG RECORD 147
+QUESTION: What dimensions are recorded for the XEV 9e?
+ANSWER: The recorded dimension reference is Approx. 4,790 x 1,905 x 1,690 mm; wheelbase 2,775 mm.
+RETRIEVAL NOTE: Preserve the company, reporting period, market, unit and metric definition when returning this answer.
+
+RAG RECORD 148
+QUESTION: What price information is recorded for the XEV 9e?
+ANSWER: The current dated market snapshot is ₹21.9 lakh starting in an August 2026 market snapshot.
+RETRIEVAL NOTE: Preserve the company, reporting period, market, unit and metric definition when returning this answer.
+
+RAG RECORD 149
+QUESTION: Is the XEV 9e price universal worldwide?
+ANSWER: No. It is a dated India-market reference and varies by market, trim, tax and model year.
+RETRIEVAL NOTE: Preserve the company, reporting period, market, unit and metric definition when returning this answer.
+
+RAG RECORD 150
+QUESTION: Should the XEV 9e mileage be treated as real-world fuel consumption?
+ANSWER: No. It should be treated as the cited claimed/test-cycle reference unless a source explicitly states otherwise.
+RETRIEVAL NOTE: Preserve the company, reporting period, market, unit and metric definition when returning this answer.
+
+RAG RECORD 151
+QUESTION: What is the main sales period used for this company?
+ANSWER: The main sales period is FY2025 (year ended March 31, 2025).
+RETRIEVAL NOTE: Preserve the company, reporting period, market, unit and metric definition when returning this answer.
+
+RAG RECORD 152
+QUESTION: What is the headline vehicle-volume figure?
+ANSWER: The headline figure is 941,115 vehicles sold by the Company; 424,641 tractors; 1.37 million vehicles and tractors globally across Automotive and Farm sectors and subsidiaries/JVs.
+RETRIEVAL NOTE: Preserve the company, reporting period, market, unit and metric definition when returning this answer.
+
+RAG RECORD 153
+QUESTION: What are the reported regional sales figures?
+ANSWER: The regional figures are India: primary automotive and tractor market; Exports: included in company vehicle/tractor sales; Global subsidiaries/JVs: included in the broader 1.37 million global sales figure.
+RETRIEVAL NOTE: Preserve the company, reporting period, market, unit and metric definition when returning this answer.
+
+RAG RECORD 154
+QUESTION: Why must sales and production be distinguished?
+ANSWER: They are different measures: sales describe vehicles sold or delivered, while production describes vehicles manufactured.
+RETRIEVAL NOTE: Preserve the company, reporting period, market, unit and metric definition when returning this answer.
+
+RAG RECORD 155
+QUESTION: Why should wholesale and retail sales not be mixed?
+ANSWER: They represent different points in the distribution chain and can therefore produce different totals.
+RETRIEVAL NOTE: Preserve the company, reporting period, market, unit and metric definition when returning this answer.
+
+RAG RECORD 156
+QUESTION: Why are model prices dated?
+ANSWER: Automotive prices change with model years, variants, taxes, offers and market conditions.
+RETRIEVAL NOTE: Preserve the company, reporting period, market, unit and metric definition when returning this answer.
+
+RAG RECORD 157
+QUESTION: Why should model specifications include the market?
+ANSWER: A model can have different engines, dimensions, features and pricing in different countries.
+RETRIEVAL NOTE: Preserve the company, reporting period, market, unit and metric definition when returning this answer.
+
+RAG RECORD 158
+QUESTION: What electrification information is available?
+ANSWER: Mahindra's EV strategy expanded with dedicated electric SUVs such as BE 6 and XEV 9e, while the company continued ICE SUVs and commercial vehicles.
+RETRIEVAL NOTE: Preserve the company, reporting period, market, unit and metric definition when returning this answer.
+
+RAG RECORD 159
+QUESTION: What financial information is included?
+ANSWER: Mahindra FY25 reporting highlights 14.1% year-on-year growth in vehicle volume and 12.2% growth in tractor volume.
+RETRIEVAL NOTE: Preserve the company, reporting period, market, unit and metric definition when returning this answer.
+
+RAG RECORD 160
+QUESTION: How should a RAG system store regional sales?
+ANSWER: Store company, year, region, metric type, unit, value and source as metadata.
+RETRIEVAL NOTE: Preserve the company, reporting period, market, unit and metric definition when returning this answer.
+
+RAG RECORD 161
+QUESTION: How should a RAG system store model price?
+ANSWER: Store model, market, currency, price basis, date, variant and source.
+RETRIEVAL NOTE: Preserve the company, reporting period, market, unit and metric definition when returning this answer.
+
+RAG RECORD 162
+QUESTION: What should happen when a specification is market dependent?
+ANSWER: The answer should say that it is market or variant dependent instead of inventing a universal value.
+RETRIEVAL NOTE: Preserve the company, reporting period, market, unit and metric definition when returning this answer.
+
+RAG RECORD 163
+QUESTION: What are useful RAG questions for this document?
+ANSWER: Questions about sales, regions, models, powertrains, efficiency, dimensions, prices, safety, EVs, manufacturing and finance are useful.
+RETRIEVAL NOTE: Preserve the company, reporting period, market, unit and metric definition when returning this answer.
+
+RAG RECORD 164
+QUESTION: Can the largest sales region be determined?
+ANSWER: Yes, by comparing the regional values after confirming they use the same metric and period.
+RETRIEVAL NOTE: Preserve the company, reporting period, market, unit and metric definition when returning this answer.
+
+RAG RECORD 165
+QUESTION: Can global sales be compared with another company?
+ANSWER: Yes, if the reporting period, sales definition and scope are aligned.
+RETRIEVAL NOTE: Preserve the company, reporting period, market, unit and metric definition when returning this answer.
+
+
+### 20. Source register
+
+Mahindra FY2025 Annual Report: https://www.mahindra.com/sites/default/files/2025-06/MMAnnualReportFY2025.pdf
+
+Mahindra FY25 management discussion: https://www.mahindra.com/sites/default/files/2025-06/MMAnnualReportFY2025.pdf
+
+Mahindra current India market snapshot: https://www.carwale.com/Mahindra-cars/
+
+Mahindra Scorpio N market data: https://www.carwale.com/mahindra-cars/scorpio-n/
+
+Mahindra XEV 9e market data: https://www.carwale.com/mahindra-cars/xev-9e/
+
+END OF DATASET

@@ -1,0 +1,1144 @@
+RAG AUTOMOTIVE DATASET — KIA CORPORATION
+Document purpose: source-based automotive knowledge corpus for Retrieval-Augmented Generation experiments.
+Data snapshot: 2025 corporate sales/financial data plus selected India-market model information available around August 2026.
+
+IMPORTANT DATA QUALITY RULES
+1. Corporate sales, production, wholesale, retail and exports are different measures.
+2. Fiscal years differ between manufacturers. Do not compare fiscal-year numbers with calendar-year numbers without checking the period.
+3. Model specifications vary by market, model year, trim and powertrain.
+4. Prices are India-market snapshots and are not universal global prices.
+5. Where an exact figure was not found in the cited source, the field is marked market-dependent rather than invented.
+6. This is a curated, paraphrased dataset. It is not a copy of any annual report.
+
+
+### 1. Company identity and overview
+
+Kia Corporation is the company represented by this document. The document is designed to capture corporate identity, vehicle portfolio, technology, manufacturing, sales geography, financial indicators and model-level information in one retrievable unit.
+
+The main reporting period for the sales dataset is Calendar 2025. The headline vehicle figure is 3,135,873 global units. This headline should always be interpreted together with the reporting definition used by the company.
+
+Automotive companies publish multiple measures. A delivery may refer to a vehicle handed to a customer, a wholesale may represent a vehicle sold through a distribution channel, a retail sale may represent the end-customer transaction, production measures vehicles leaving a manufacturing line, and exports measure vehicles shipped across borders. These measures can differ substantially.
+
+For RAG evaluation, this distinction is intentionally preserved. A strong system should not answer a question about customer deliveries using a production number simply because both numbers contain the word 'vehicles'.
+
+The document also contains selected model information. These model records are deliberately structured so that retrieval can answer questions about body style, engine or electric architecture, output, mileage, dimensions, price and safety/technology themes.
+
+
+### 2. 2025 sales and vehicle-volume facts
+
+The principal 2025 volume figure recorded for Kia Corporation is 3,135,873 global units. The number should be stored with the time period and measurement definition because the same company can publish different totals for different reporting scopes.
+
+The regional distribution reported or summarized for this company is: Korea: 545,776; Outside Korea: 2,584,238; United States: record 852,155 in 2025 according to Kia America release.
+
+Kia's 2025 global result is a record. Global sales figures include the company's stated sales scope; regional retail/wholesale definitions should be checked before comparisons.
+
+Regional sales are especially valuable for RAG because a user can ask both direct questions and comparison questions. Examples include which region was largest, whether a region grew or declined, how much of the total was concentrated in a country, and whether the company's electric-vehicle mix differed by geography.
+
+A useful retrieval strategy is to attach region metadata to chunks containing sales tables. Another useful strategy is to keep the reporting year, sales definition and unit scale in metadata. For example, 'million vehicles' and 'thousand vehicles' must not be treated as identical numeric representations.
+
+
+### 3. Regional sales dataset
+
+The regional table below is intentionally written as individual facts rather than as one compressed sentence. This makes it useful for chunking and retrieval tests.
+
+Korea: 545,776. This regional figure belongs to the Calendar 2025 sales context for Kia Corporation. It should be compared only with figures using the same reporting definition unless the question explicitly asks for a cross-definition analysis.
+
+Outside Korea: 2,584,238. This regional figure belongs to the Calendar 2025 sales context for Kia Corporation. It should be compared only with figures using the same reporting definition unless the question explicitly asks for a cross-definition analysis.
+
+United States: record 852,155 in 2025 according to Kia America release. This regional figure belongs to the Calendar 2025 sales context for Kia Corporation. It should be compared only with figures using the same reporting definition unless the question explicitly asks for a cross-definition analysis.
+
+When building an evaluation set, questions should include both exact lookup and reasoning tasks. An exact lookup asks for one region. A reasoning task asks for the largest region, the smallest region, a share of the total, or a comparison with another region.
+
+Regional questions can also be designed to test whether the retriever returns the right company's data. Similar numbers occur across automotive companies, so metadata and semantic context are important.
+
+
+### 4. Product portfolio and selected models
+
+Kia Corporation has a portfolio spanning multiple vehicle categories. The following selected models are included to create model-level entities for RAG retrieval.
+
+Sonet is included as a selected Compact SUV model reference for Kia Corporation. The documented powertrain description is 1.2L petrol / 1.0L turbo petrol / 1.5L diesel. The cited performance field is Variant dependent. Fuel-efficiency information is Market/variant dependent. The dimensional reference is Approx. 3,995 x 1,790 x 1,642 mm; wheelbase 2,500 mm. Pricing information is ₹7.41 lakh starting in an August 2026 market snapshot. Prices are market snapshots rather than timeless facts and can change with city, trim, taxes, offers, model year and manufacturer revisions. The model should therefore be treated as a structured RAG entity with fields for model name, body type, powertrain, output, efficiency, dimensions and price. When answering a question about this model, the retrieval system should preserve the market and date context rather than mixing figures from different variants or years.
+
+Seltos is included as a selected Mid-size SUV model reference for Kia Corporation. The documented powertrain description is 1.5L petrol / 1.5L diesel / 1.5L turbo petrol. The cited performance field is 158 bhp / 253 Nm cited for 1.5L turbo. Fuel-efficiency information is Variant dependent. The dimensional reference is Approx. 4,365 x 1,800 x 1,645 mm; wheelbase 2,610 mm. Pricing information is ₹11 lakh starting in an August 2026 market snapshot. Prices are market snapshots rather than timeless facts and can change with city, trim, taxes, offers, model year and manufacturer revisions. The model should therefore be treated as a structured RAG entity with fields for model name, body type, powertrain, output, efficiency, dimensions and price. When answering a question about this model, the retrieval system should preserve the market and date context rather than mixing figures from different variants or years.
+
+Carens is included as a selected MPV model reference for Kia Corporation. The documented powertrain description is 1.5L petrol / 1.5L turbo petrol / 1.5L diesel. The cited performance field is Variant dependent. Fuel-efficiency information is Variant dependent. The dimensional reference is Approx. 4,540 x 1,800 x 1,708 mm; wheelbase 2,780 mm. Pricing information is ₹11.02 lakh starting in an August 2026 market snapshot. Prices are market snapshots rather than timeless facts and can change with city, trim, taxes, offers, model year and manufacturer revisions. The model should therefore be treated as a structured RAG entity with fields for model name, body type, powertrain, output, efficiency, dimensions and price. When answering a question about this model, the retrieval system should preserve the market and date context rather than mixing figures from different variants or years.
+
+EV6 is included as a selected Electric crossover model reference for Kia Corporation. The documented powertrain description is Battery electric. The cited performance field is Market dependent. Fuel-efficiency information is Electric range depends on battery/test cycle. The dimensional reference is Approx. 4,695 x 1,890 x 1,550 mm; wheelbase 2,900 mm. Pricing information is ₹76.32 lakh cited in an August 2026 market snapshot. Prices are market snapshots rather than timeless facts and can change with city, trim, taxes, offers, model year and manufacturer revisions. The model should therefore be treated as a structured RAG entity with fields for model name, body type, powertrain, output, efficiency, dimensions and price. When answering a question about this model, the retrieval system should preserve the market and date context rather than mixing figures from different variants or years.
+
+EV9 is included as a selected Three-row electric SUV model reference for Kia Corporation. The documented powertrain description is Battery electric. The cited performance field is Market dependent. Fuel-efficiency information is Electric range depends on battery/test cycle. The dimensional reference is Approx. 5,010 x 1,980 x 1,755 mm; wheelbase 3,100 mm. Pricing information is ₹1.50 crore cited in an August 2026 market snapshot. Prices are market snapshots rather than timeless facts and can change with city, trim, taxes, offers, model year and manufacturer revisions. The model should therefore be treated as a structured RAG entity with fields for model name, body type, powertrain, output, efficiency, dimensions and price. When answering a question about this model, the retrieval system should preserve the market and date context rather than mixing figures from different variants or years.
+
+Model-level retrieval should preserve the relationship between a model and its manufacturer. A query such as 'Which model has a 2.0-litre turbo engine?' should not retrieve a model from another company simply because the engine displacement is similar.
+
+For numerical questions, the answer should preserve units. Engine displacement is commonly expressed in cubic centimetres or litres, power may be expressed in bhp, PS or kW, torque in Nm, dimensions in millimetres, price in lakh/crore rupees and fuel economy in km/l. Electric range must include the test-cycle context where available.
+
+
+### 5. Engine and powertrain specifications
+
+The powertrain portfolio for Kia Corporation includes the technologies represented in the selected models: 1.2L petrol / 1.0L turbo petrol / 1.5L diesel; 1.5L petrol / 1.5L diesel / 1.5L turbo petrol; 1.5L petrol / 1.5L turbo petrol / 1.5L diesel; Battery electric; Battery electric.
+
+Internal-combustion engines can be compared by displacement, cylinder arrangement, forced induction, maximum power, maximum torque, transmission and fuel type. Hybrid systems require additional fields such as battery architecture and electric-motor contribution. Battery-electric vehicles require battery capacity, motor output, charging rate and range.
+
+A RAG dataset should not collapse all powertrain types into one generic 'engine' field. An electric vehicle does not have engine displacement in the same sense as an internal-combustion vehicle. A hybrid may contain both an engine and electric motor.
+
+Transmission values should also be preserved. Manual, automatic torque-converter, dual-clutch, CVT, AMT and single-speed EV reductions represent different technologies and should be retrievable independently.
+
+Power figures are variant-dependent. The selected model records therefore use representative values and explicitly state when the value is variant or market dependent.
+
+
+### 6. Mileage, efficiency and operating-cost context
+
+Fuel economy is a contextual metric. A claimed test-cycle value should not be presented as the same thing as real-world owner-reported consumption. Laboratory cycles are designed for standardized comparison, while real driving depends on traffic, speed, climate, load, tyre pressure, driving style and route.
+
+For Sonet, the documented efficiency reference is Market/variant dependent. This value should be stored with the model and powertrain rather than as a company-wide mileage figure.
+
+For Seltos, the documented efficiency reference is Variant dependent. This value should be stored with the model and powertrain rather than as a company-wide mileage figure.
+
+For Carens, the documented efficiency reference is Variant dependent. This value should be stored with the model and powertrain rather than as a company-wide mileage figure.
+
+For EV6, the documented efficiency reference is Electric range depends on battery/test cycle. This value should be stored with the model and powertrain rather than as a company-wide mileage figure.
+
+For EV9, the documented efficiency reference is Electric range depends on battery/test cycle. This value should be stored with the model and powertrain rather than as a company-wide mileage figure.
+
+For EVs, the analogous fields are electric range, battery capacity and energy consumption. Range also varies with temperature, speed, tyre choice, payload, climate-control use and test cycle.
+
+These distinctions make excellent RAG test cases. A good question might ask for the highest claimed mileage among selected models, while a stronger question asks whether that value belongs to a petrol, diesel, CNG, hybrid or electric configuration.
+
+
+### 7. Dimensions and packaging
+
+Vehicle dimensions provide structured numerical data for retrieval. The main fields are length, width, height and wheelbase. Additional useful fields include ground clearance, boot volume, seating capacity, kerb weight and turning radius.
+
+Sonet dimension reference: Approx. 3,995 x 1,790 x 1,642 mm; wheelbase 2,500 mm. The figure is market/trim dependent where stated and should not be treated as a universal specification for every derivative.
+
+Seltos dimension reference: Approx. 4,365 x 1,800 x 1,645 mm; wheelbase 2,610 mm. The figure is market/trim dependent where stated and should not be treated as a universal specification for every derivative.
+
+Carens dimension reference: Approx. 4,540 x 1,800 x 1,708 mm; wheelbase 2,780 mm. The figure is market/trim dependent where stated and should not be treated as a universal specification for every derivative.
+
+EV6 dimension reference: Approx. 4,695 x 1,890 x 1,550 mm; wheelbase 2,900 mm. The figure is market/trim dependent where stated and should not be treated as a universal specification for every derivative.
+
+EV9 dimension reference: Approx. 5,010 x 1,980 x 1,755 mm; wheelbase 3,100 mm. The figure is market/trim dependent where stated and should not be treated as a universal specification for every derivative.
+
+Wheelbase is particularly useful for comparison questions because it is related to cabin packaging but does not by itself determine interior space. Vehicle width and height also influence road presence and parking considerations.
+
+A RAG system should keep dimensions in their original units and avoid silently converting them during retrieval. If a user asks for metres while the source is in millimetres, conversion should happen after retrieval.
+
+
+### 8. Price information
+
+Price is one of the most volatile fields in an automotive corpus. Prices change because manufacturers introduce new model years, update variants, revise taxes, run discounts or change ex-showroom prices.
+
+Sonet price reference: ₹7.41 lakh starting in an August 2026 market snapshot. This is a dated India-market snapshot and is not a recommendation or a guaranteed current dealer quotation.
+
+Seltos price reference: ₹11 lakh starting in an August 2026 market snapshot. This is a dated India-market snapshot and is not a recommendation or a guaranteed current dealer quotation.
+
+Carens price reference: ₹11.02 lakh starting in an August 2026 market snapshot. This is a dated India-market snapshot and is not a recommendation or a guaranteed current dealer quotation.
+
+EV6 price reference: ₹76.32 lakh cited in an August 2026 market snapshot. This is a dated India-market snapshot and is not a recommendation or a guaranteed current dealer quotation.
+
+EV9 price reference: ₹1.50 crore cited in an August 2026 market snapshot. This is a dated India-market snapshot and is not a recommendation or a guaranteed current dealer quotation.
+
+For a high-quality RAG evaluation set, every price chunk should contain the country, city if relevant, currency, price basis such as ex-showroom or on-road, date, model year and variant. Without those fields, the retriever can return a technically correct number that is wrong for the user's context.
+
+Questions should distinguish between starting price, top-variant price and on-road price. These are not interchangeable.
+
+
+### 9. Safety and driver-assistance information
+
+Safety information should be represented using discrete features such as airbags, electronic stability control, anti-lock braking, traction control, cameras, parking sensors, autonomous emergency braking, lane-keeping support, adaptive cruise control and blind-spot monitoring.
+
+Safety equipment is usually trim-dependent. A feature appearing in a premium variant should not automatically be attributed to the base variant.
+
+Safety ratings also depend on market, test protocol and model year. A crash-test result from one market should not be generalized to every market configuration without checking the test scope.
+
+For RAG, safety questions are useful because they require semantic retrieval from feature descriptions rather than only exact numeric matching.
+
+
+### 10. EV and electrification strategy
+
+Kia reported 186,000 global retail electrified-vehicle sales in Q4 2025 and continued expansion of hybrid and EV products.
+
+Electrification can be represented at several levels: mild hybrid, full hybrid, plug-in hybrid, battery electric and fuel-cell electric. The distinction matters because each technology has different charging, fuel and energy characteristics.
+
+The corporate-level EV section should be connected to model-level records through model names and powertrain metadata. This allows questions such as 'Which selected models are fully electric?' or 'Which models use hybrid systems?'
+
+For regional analysis, the RAG system should retrieve both corporate strategy and actual sales data. A strategy statement is not proof of sales volume. Similarly, a sales number does not by itself explain the company's technology strategy.
+
+
+### 11. Manufacturing and production
+
+Kia Corporation operates within a global automotive manufacturing and supply ecosystem. Manufacturing information is relevant because vehicle sales, production and exports are connected but not identical.
+
+Useful manufacturing fields include plant location, production capacity, model produced, powertrain type, localization, supplier network, battery production, joint ventures and logistics routes.
+
+A manufacturing plant may produce vehicles for several countries, and a vehicle sold in a region may have been produced in a different region. This makes manufacturing-location questions an excellent test of retrieval precision.
+
+For this dataset, manufacturing claims should be paired with the relevant corporate report or official manufacturing source. If a plant-level fact is not explicitly available in the source set, it should not be invented.
+
+
+### 12. Technology and software
+
+Modern automotive technology spans powertrain control, connected services, infotainment, advanced driver assistance, digital cockpits, over-the-air software updates, navigation, vehicle-to-cloud communication and increasingly software-defined vehicle architectures.
+
+The selected model portfolio should be enriched with technology fields when a source provides them. Examples include ADAS packages, digital displays, smartphone integration, connected-car services, remote vehicle functions and charging technology.
+
+Technology is another strong RAG category because product names and technical concepts often appear in different sections of a long corporate document. A query may mention a technology without mentioning the model name.
+
+
+### 13. Financial information
+
+The headline financial context for Kia Corporation is tied to the reporting period Calendar 2025. 2025 revenue was KRW 114.141 trillion; operating profit was KRW 9.078 trillion; net profit was KRW 7.554 trillion.
+
+Financial values should retain their currency and scale. KRW trillion, Japanese yen billion, euros billion and Indian rupees crore are not directly comparable without normalization.
+
+For cross-company RAG questions, the safest approach is to retrieve the source values first and perform arithmetic only after retrieval. This reduces the chance of mixing fiscal periods or currency units.
+
+Financial information is included because automotive companies are not only manufacturers; they also operate financing, leasing, insurance, technology and other businesses in many cases.
+
+
+### 14. Warranty and after-sales context
+
+Warranty is a market-specific commercial term. It can cover the vehicle for a fixed period or mileage, while separate warranties may apply to batteries, paint, corrosion and accessories.
+
+The dataset should therefore treat warranty as a structured field with market, duration, mileage limit, battery coverage and exclusions. A warranty advertised in one country should not be assumed to apply globally.
+
+For the current model snapshots, warranty should be verified against the manufacturer's latest India warranty terms before making a customer-facing decision. This file deliberately avoids turning dealer or third-party warranty summaries into universal corporate policy.
+
+
+### 15. Market share and competitive context
+
+Market share is a ratio and must always specify the market, segment, period and denominator. Passenger-vehicle share, SUV share, EV share and total automotive share are different measures.
+
+The company sales figures in this document are manufacturer-level volumes. They should not be interpreted as market share unless the relevant total market denominator is also available.
+
+Competitive RAG questions can compare two or more manufacturers, but the system should retrieve matching definitions. A global company delivery figure should not be compared with a domestic retail-sales figure without an explicit caveat.
+
+
+### 16. Historical trend interpretation
+
+The reporting data for Kia Corporation should be used as a time-series corpus when multiple annual observations are available. The most important dimensions are vehicle volume, regional mix, electrified volume, revenue, operating profit and model mix.
+
+A useful RAG question can ask whether sales increased or decreased from one year to another, but arithmetic should be performed from retrieved values rather than from memory.
+
+The same principle applies to regional trends. If two years of regional sales are available, the system can compute absolute change and percentage change. The source period and unit must remain attached to the numbers.
+
+
+### 17. RAG metadata recommendations
+
+Recommended metadata for this file: company=Kia Corporation; report_period=Calendar 2025; industry=automotive; document_type=company dossier; geography=global plus India model snapshot.
+
+Recommended model metadata: model_name, company, model_type, fuel_type, powertrain, engine_displacement, power, torque, mileage, length_mm, width_mm, height_mm, wheelbase_mm, price_inr, price_date, market, safety_features and source.
+
+Recommended sales metadata: sales_year, metric_type, geography, unit, value, reporting_scope and source.
+
+Recommended retrieval filters include company, model, region, year, powertrain and metric type. Metadata filters can complement semantic retrieval but should not replace it.
+
+
+### 18. Atomic data records for chunking
+
+Sales fact — Kia Corporation — Calendar 2025 — region: Korea — reported value: 545,776.
+
+Sales fact — Kia Corporation — Calendar 2025 — region: Outside Korea — reported value: 2,584,238.
+
+Sales fact — Kia Corporation — Calendar 2025 — region: United States — reported value: record 852,155 in 2025 according to Kia America release.
+
+Model fact — Sonet — manufacturer: Kia Corporation — category: Compact SUV.
+
+Powertrain fact — Sonet — 1.2L petrol / 1.0L turbo petrol / 1.5L diesel.
+
+Output fact — Sonet — Variant dependent.
+
+Efficiency fact — Sonet — Market/variant dependent.
+
+Dimension fact — Sonet — Approx. 3,995 x 1,790 x 1,642 mm; wheelbase 2,500 mm.
+
+Price fact — Sonet — ₹7.41 lakh starting in an August 2026 market snapshot.
+
+Model fact — Seltos — manufacturer: Kia Corporation — category: Mid-size SUV.
+
+Powertrain fact — Seltos — 1.5L petrol / 1.5L diesel / 1.5L turbo petrol.
+
+Output fact — Seltos — 158 bhp / 253 Nm cited for 1.5L turbo.
+
+Efficiency fact — Seltos — Variant dependent.
+
+Dimension fact — Seltos — Approx. 4,365 x 1,800 x 1,645 mm; wheelbase 2,610 mm.
+
+Price fact — Seltos — ₹11 lakh starting in an August 2026 market snapshot.
+
+Model fact — Carens — manufacturer: Kia Corporation — category: MPV.
+
+Powertrain fact — Carens — 1.5L petrol / 1.5L turbo petrol / 1.5L diesel.
+
+Output fact — Carens — Variant dependent.
+
+Efficiency fact — Carens — Variant dependent.
+
+Dimension fact — Carens — Approx. 4,540 x 1,800 x 1,708 mm; wheelbase 2,780 mm.
+
+Price fact — Carens — ₹11.02 lakh starting in an August 2026 market snapshot.
+
+Model fact — EV6 — manufacturer: Kia Corporation — category: Electric crossover.
+
+Powertrain fact — EV6 — Battery electric.
+
+Output fact — EV6 — Market dependent.
+
+Efficiency fact — EV6 — Electric range depends on battery/test cycle.
+
+Dimension fact — EV6 — Approx. 4,695 x 1,890 x 1,550 mm; wheelbase 2,900 mm.
+
+Price fact — EV6 — ₹76.32 lakh cited in an August 2026 market snapshot.
+
+Model fact — EV9 — manufacturer: Kia Corporation — category: Three-row electric SUV.
+
+Powertrain fact — EV9 — Battery electric.
+
+Output fact — EV9 — Market dependent.
+
+Efficiency fact — EV9 — Electric range depends on battery/test cycle.
+
+Dimension fact — EV9 — Approx. 5,010 x 1,980 x 1,755 mm; wheelbase 3,100 mm.
+
+Price fact — EV9 — ₹1.50 crore cited in an August 2026 market snapshot.
+
+
+### 19. RAG evaluation question bank
+
+RAG RECORD 001
+QUESTION: What type of vehicle is the Sonet?
+ANSWER: Sonet is described in this dataset as a Compact SUV.
+RETRIEVAL NOTE: Preserve the company, reporting period, market, unit and metric definition when returning this answer.
+
+RAG RECORD 002
+QUESTION: What powertrain is recorded for the Sonet?
+ANSWER: The recorded powertrain is 1.2L petrol / 1.0L turbo petrol / 1.5L diesel.
+RETRIEVAL NOTE: Preserve the company, reporting period, market, unit and metric definition when returning this answer.
+
+RAG RECORD 003
+QUESTION: What performance figure is recorded for the Sonet?
+ANSWER: The representative output is Variant dependent.
+RETRIEVAL NOTE: Preserve the company, reporting period, market, unit and metric definition when returning this answer.
+
+RAG RECORD 004
+QUESTION: What mileage information is recorded for the Sonet?
+ANSWER: The recorded efficiency reference is Market/variant dependent.
+RETRIEVAL NOTE: Preserve the company, reporting period, market, unit and metric definition when returning this answer.
+
+RAG RECORD 005
+QUESTION: What dimensions are recorded for the Sonet?
+ANSWER: The recorded dimension reference is Approx. 3,995 x 1,790 x 1,642 mm; wheelbase 2,500 mm.
+RETRIEVAL NOTE: Preserve the company, reporting period, market, unit and metric definition when returning this answer.
+
+RAG RECORD 006
+QUESTION: What price information is recorded for the Sonet?
+ANSWER: The current dated market snapshot is ₹7.41 lakh starting in an August 2026 market snapshot.
+RETRIEVAL NOTE: Preserve the company, reporting period, market, unit and metric definition when returning this answer.
+
+RAG RECORD 007
+QUESTION: Is the Sonet price universal worldwide?
+ANSWER: No. It is a dated India-market reference and varies by market, trim, tax and model year.
+RETRIEVAL NOTE: Preserve the company, reporting period, market, unit and metric definition when returning this answer.
+
+RAG RECORD 008
+QUESTION: Should the Sonet mileage be treated as real-world fuel consumption?
+ANSWER: No. It should be treated as the cited claimed/test-cycle reference unless a source explicitly states otherwise.
+RETRIEVAL NOTE: Preserve the company, reporting period, market, unit and metric definition when returning this answer.
+
+RAG RECORD 009
+QUESTION: What type of vehicle is the Seltos?
+ANSWER: Seltos is described in this dataset as a Mid-size SUV.
+RETRIEVAL NOTE: Preserve the company, reporting period, market, unit and metric definition when returning this answer.
+
+RAG RECORD 010
+QUESTION: What powertrain is recorded for the Seltos?
+ANSWER: The recorded powertrain is 1.5L petrol / 1.5L diesel / 1.5L turbo petrol.
+RETRIEVAL NOTE: Preserve the company, reporting period, market, unit and metric definition when returning this answer.
+
+RAG RECORD 011
+QUESTION: What performance figure is recorded for the Seltos?
+ANSWER: The representative output is 158 bhp / 253 Nm cited for 1.5L turbo.
+RETRIEVAL NOTE: Preserve the company, reporting period, market, unit and metric definition when returning this answer.
+
+RAG RECORD 012
+QUESTION: What mileage information is recorded for the Seltos?
+ANSWER: The recorded efficiency reference is Variant dependent.
+RETRIEVAL NOTE: Preserve the company, reporting period, market, unit and metric definition when returning this answer.
+
+RAG RECORD 013
+QUESTION: What dimensions are recorded for the Seltos?
+ANSWER: The recorded dimension reference is Approx. 4,365 x 1,800 x 1,645 mm; wheelbase 2,610 mm.
+RETRIEVAL NOTE: Preserve the company, reporting period, market, unit and metric definition when returning this answer.
+
+RAG RECORD 014
+QUESTION: What price information is recorded for the Seltos?
+ANSWER: The current dated market snapshot is ₹11 lakh starting in an August 2026 market snapshot.
+RETRIEVAL NOTE: Preserve the company, reporting period, market, unit and metric definition when returning this answer.
+
+RAG RECORD 015
+QUESTION: Is the Seltos price universal worldwide?
+ANSWER: No. It is a dated India-market reference and varies by market, trim, tax and model year.
+RETRIEVAL NOTE: Preserve the company, reporting period, market, unit and metric definition when returning this answer.
+
+RAG RECORD 016
+QUESTION: Should the Seltos mileage be treated as real-world fuel consumption?
+ANSWER: No. It should be treated as the cited claimed/test-cycle reference unless a source explicitly states otherwise.
+RETRIEVAL NOTE: Preserve the company, reporting period, market, unit and metric definition when returning this answer.
+
+RAG RECORD 017
+QUESTION: What type of vehicle is the Carens?
+ANSWER: Carens is described in this dataset as a MPV.
+RETRIEVAL NOTE: Preserve the company, reporting period, market, unit and metric definition when returning this answer.
+
+RAG RECORD 018
+QUESTION: What powertrain is recorded for the Carens?
+ANSWER: The recorded powertrain is 1.5L petrol / 1.5L turbo petrol / 1.5L diesel.
+RETRIEVAL NOTE: Preserve the company, reporting period, market, unit and metric definition when returning this answer.
+
+RAG RECORD 019
+QUESTION: What performance figure is recorded for the Carens?
+ANSWER: The representative output is Variant dependent.
+RETRIEVAL NOTE: Preserve the company, reporting period, market, unit and metric definition when returning this answer.
+
+RAG RECORD 020
+QUESTION: What mileage information is recorded for the Carens?
+ANSWER: The recorded efficiency reference is Variant dependent.
+RETRIEVAL NOTE: Preserve the company, reporting period, market, unit and metric definition when returning this answer.
+
+RAG RECORD 021
+QUESTION: What dimensions are recorded for the Carens?
+ANSWER: The recorded dimension reference is Approx. 4,540 x 1,800 x 1,708 mm; wheelbase 2,780 mm.
+RETRIEVAL NOTE: Preserve the company, reporting period, market, unit and metric definition when returning this answer.
+
+RAG RECORD 022
+QUESTION: What price information is recorded for the Carens?
+ANSWER: The current dated market snapshot is ₹11.02 lakh starting in an August 2026 market snapshot.
+RETRIEVAL NOTE: Preserve the company, reporting period, market, unit and metric definition when returning this answer.
+
+RAG RECORD 023
+QUESTION: Is the Carens price universal worldwide?
+ANSWER: No. It is a dated India-market reference and varies by market, trim, tax and model year.
+RETRIEVAL NOTE: Preserve the company, reporting period, market, unit and metric definition when returning this answer.
+
+RAG RECORD 024
+QUESTION: Should the Carens mileage be treated as real-world fuel consumption?
+ANSWER: No. It should be treated as the cited claimed/test-cycle reference unless a source explicitly states otherwise.
+RETRIEVAL NOTE: Preserve the company, reporting period, market, unit and metric definition when returning this answer.
+
+RAG RECORD 025
+QUESTION: What type of vehicle is the EV6?
+ANSWER: EV6 is described in this dataset as a Electric crossover.
+RETRIEVAL NOTE: Preserve the company, reporting period, market, unit and metric definition when returning this answer.
+
+RAG RECORD 026
+QUESTION: What powertrain is recorded for the EV6?
+ANSWER: The recorded powertrain is Battery electric.
+RETRIEVAL NOTE: Preserve the company, reporting period, market, unit and metric definition when returning this answer.
+
+RAG RECORD 027
+QUESTION: What performance figure is recorded for the EV6?
+ANSWER: The representative output is Market dependent.
+RETRIEVAL NOTE: Preserve the company, reporting period, market, unit and metric definition when returning this answer.
+
+RAG RECORD 028
+QUESTION: What mileage information is recorded for the EV6?
+ANSWER: The recorded efficiency reference is Electric range depends on battery/test cycle.
+RETRIEVAL NOTE: Preserve the company, reporting period, market, unit and metric definition when returning this answer.
+
+RAG RECORD 029
+QUESTION: What dimensions are recorded for the EV6?
+ANSWER: The recorded dimension reference is Approx. 4,695 x 1,890 x 1,550 mm; wheelbase 2,900 mm.
+RETRIEVAL NOTE: Preserve the company, reporting period, market, unit and metric definition when returning this answer.
+
+RAG RECORD 030
+QUESTION: What price information is recorded for the EV6?
+ANSWER: The current dated market snapshot is ₹76.32 lakh cited in an August 2026 market snapshot.
+RETRIEVAL NOTE: Preserve the company, reporting period, market, unit and metric definition when returning this answer.
+
+RAG RECORD 031
+QUESTION: Is the EV6 price universal worldwide?
+ANSWER: No. It is a dated India-market reference and varies by market, trim, tax and model year.
+RETRIEVAL NOTE: Preserve the company, reporting period, market, unit and metric definition when returning this answer.
+
+RAG RECORD 032
+QUESTION: Should the EV6 mileage be treated as real-world fuel consumption?
+ANSWER: No. It should be treated as the cited claimed/test-cycle reference unless a source explicitly states otherwise.
+RETRIEVAL NOTE: Preserve the company, reporting period, market, unit and metric definition when returning this answer.
+
+RAG RECORD 033
+QUESTION: What type of vehicle is the EV9?
+ANSWER: EV9 is described in this dataset as a Three-row electric SUV.
+RETRIEVAL NOTE: Preserve the company, reporting period, market, unit and metric definition when returning this answer.
+
+RAG RECORD 034
+QUESTION: What powertrain is recorded for the EV9?
+ANSWER: The recorded powertrain is Battery electric.
+RETRIEVAL NOTE: Preserve the company, reporting period, market, unit and metric definition when returning this answer.
+
+RAG RECORD 035
+QUESTION: What performance figure is recorded for the EV9?
+ANSWER: The representative output is Market dependent.
+RETRIEVAL NOTE: Preserve the company, reporting period, market, unit and metric definition when returning this answer.
+
+RAG RECORD 036
+QUESTION: What mileage information is recorded for the EV9?
+ANSWER: The recorded efficiency reference is Electric range depends on battery/test cycle.
+RETRIEVAL NOTE: Preserve the company, reporting period, market, unit and metric definition when returning this answer.
+
+RAG RECORD 037
+QUESTION: What dimensions are recorded for the EV9?
+ANSWER: The recorded dimension reference is Approx. 5,010 x 1,980 x 1,755 mm; wheelbase 3,100 mm.
+RETRIEVAL NOTE: Preserve the company, reporting period, market, unit and metric definition when returning this answer.
+
+RAG RECORD 038
+QUESTION: What price information is recorded for the EV9?
+ANSWER: The current dated market snapshot is ₹1.50 crore cited in an August 2026 market snapshot.
+RETRIEVAL NOTE: Preserve the company, reporting period, market, unit and metric definition when returning this answer.
+
+RAG RECORD 039
+QUESTION: Is the EV9 price universal worldwide?
+ANSWER: No. It is a dated India-market reference and varies by market, trim, tax and model year.
+RETRIEVAL NOTE: Preserve the company, reporting period, market, unit and metric definition when returning this answer.
+
+RAG RECORD 040
+QUESTION: Should the EV9 mileage be treated as real-world fuel consumption?
+ANSWER: No. It should be treated as the cited claimed/test-cycle reference unless a source explicitly states otherwise.
+RETRIEVAL NOTE: Preserve the company, reporting period, market, unit and metric definition when returning this answer.
+
+RAG RECORD 041
+QUESTION: What is the main sales period used for this company?
+ANSWER: The main sales period is Calendar 2025.
+RETRIEVAL NOTE: Preserve the company, reporting period, market, unit and metric definition when returning this answer.
+
+RAG RECORD 042
+QUESTION: What is the headline vehicle-volume figure?
+ANSWER: The headline figure is 3,135,873 global units.
+RETRIEVAL NOTE: Preserve the company, reporting period, market, unit and metric definition when returning this answer.
+
+RAG RECORD 043
+QUESTION: What are the reported regional sales figures?
+ANSWER: The regional figures are Korea: 545,776; Outside Korea: 2,584,238; United States: record 852,155 in 2025 according to Kia America release.
+RETRIEVAL NOTE: Preserve the company, reporting period, market, unit and metric definition when returning this answer.
+
+RAG RECORD 044
+QUESTION: Why must sales and production be distinguished?
+ANSWER: They are different measures: sales describe vehicles sold or delivered, while production describes vehicles manufactured.
+RETRIEVAL NOTE: Preserve the company, reporting period, market, unit and metric definition when returning this answer.
+
+RAG RECORD 045
+QUESTION: Why should wholesale and retail sales not be mixed?
+ANSWER: They represent different points in the distribution chain and can therefore produce different totals.
+RETRIEVAL NOTE: Preserve the company, reporting period, market, unit and metric definition when returning this answer.
+
+RAG RECORD 046
+QUESTION: Why are model prices dated?
+ANSWER: Automotive prices change with model years, variants, taxes, offers and market conditions.
+RETRIEVAL NOTE: Preserve the company, reporting period, market, unit and metric definition when returning this answer.
+
+RAG RECORD 047
+QUESTION: Why should model specifications include the market?
+ANSWER: A model can have different engines, dimensions, features and pricing in different countries.
+RETRIEVAL NOTE: Preserve the company, reporting period, market, unit and metric definition when returning this answer.
+
+RAG RECORD 048
+QUESTION: What electrification information is available?
+ANSWER: Kia reported 186,000 global retail electrified-vehicle sales in Q4 2025 and continued expansion of hybrid and EV products.
+RETRIEVAL NOTE: Preserve the company, reporting period, market, unit and metric definition when returning this answer.
+
+RAG RECORD 049
+QUESTION: What financial information is included?
+ANSWER: 2025 revenue was KRW 114.141 trillion; operating profit was KRW 9.078 trillion; net profit was KRW 7.554 trillion.
+RETRIEVAL NOTE: Preserve the company, reporting period, market, unit and metric definition when returning this answer.
+
+RAG RECORD 050
+QUESTION: How should a RAG system store regional sales?
+ANSWER: Store company, year, region, metric type, unit, value and source as metadata.
+RETRIEVAL NOTE: Preserve the company, reporting period, market, unit and metric definition when returning this answer.
+
+RAG RECORD 051
+QUESTION: How should a RAG system store model price?
+ANSWER: Store model, market, currency, price basis, date, variant and source.
+RETRIEVAL NOTE: Preserve the company, reporting period, market, unit and metric definition when returning this answer.
+
+RAG RECORD 052
+QUESTION: What should happen when a specification is market dependent?
+ANSWER: The answer should say that it is market or variant dependent instead of inventing a universal value.
+RETRIEVAL NOTE: Preserve the company, reporting period, market, unit and metric definition when returning this answer.
+
+RAG RECORD 053
+QUESTION: What are useful RAG questions for this document?
+ANSWER: Questions about sales, regions, models, powertrains, efficiency, dimensions, prices, safety, EVs, manufacturing and finance are useful.
+RETRIEVAL NOTE: Preserve the company, reporting period, market, unit and metric definition when returning this answer.
+
+RAG RECORD 054
+QUESTION: Can the largest sales region be determined?
+ANSWER: Yes, by comparing the regional values after confirming they use the same metric and period.
+RETRIEVAL NOTE: Preserve the company, reporting period, market, unit and metric definition when returning this answer.
+
+RAG RECORD 055
+QUESTION: Can global sales be compared with another company?
+ANSWER: Yes, if the reporting period, sales definition and scope are aligned.
+RETRIEVAL NOTE: Preserve the company, reporting period, market, unit and metric definition when returning this answer.
+
+RAG RECORD 056
+QUESTION: What type of vehicle is the Sonet?
+ANSWER: Sonet is described in this dataset as a Compact SUV.
+RETRIEVAL NOTE: Preserve the company, reporting period, market, unit and metric definition when returning this answer.
+
+RAG RECORD 057
+QUESTION: What powertrain is recorded for the Sonet?
+ANSWER: The recorded powertrain is 1.2L petrol / 1.0L turbo petrol / 1.5L diesel.
+RETRIEVAL NOTE: Preserve the company, reporting period, market, unit and metric definition when returning this answer.
+
+RAG RECORD 058
+QUESTION: What performance figure is recorded for the Sonet?
+ANSWER: The representative output is Variant dependent.
+RETRIEVAL NOTE: Preserve the company, reporting period, market, unit and metric definition when returning this answer.
+
+RAG RECORD 059
+QUESTION: What mileage information is recorded for the Sonet?
+ANSWER: The recorded efficiency reference is Market/variant dependent.
+RETRIEVAL NOTE: Preserve the company, reporting period, market, unit and metric definition when returning this answer.
+
+RAG RECORD 060
+QUESTION: What dimensions are recorded for the Sonet?
+ANSWER: The recorded dimension reference is Approx. 3,995 x 1,790 x 1,642 mm; wheelbase 2,500 mm.
+RETRIEVAL NOTE: Preserve the company, reporting period, market, unit and metric definition when returning this answer.
+
+RAG RECORD 061
+QUESTION: What price information is recorded for the Sonet?
+ANSWER: The current dated market snapshot is ₹7.41 lakh starting in an August 2026 market snapshot.
+RETRIEVAL NOTE: Preserve the company, reporting period, market, unit and metric definition when returning this answer.
+
+RAG RECORD 062
+QUESTION: Is the Sonet price universal worldwide?
+ANSWER: No. It is a dated India-market reference and varies by market, trim, tax and model year.
+RETRIEVAL NOTE: Preserve the company, reporting period, market, unit and metric definition when returning this answer.
+
+RAG RECORD 063
+QUESTION: Should the Sonet mileage be treated as real-world fuel consumption?
+ANSWER: No. It should be treated as the cited claimed/test-cycle reference unless a source explicitly states otherwise.
+RETRIEVAL NOTE: Preserve the company, reporting period, market, unit and metric definition when returning this answer.
+
+RAG RECORD 064
+QUESTION: What type of vehicle is the Seltos?
+ANSWER: Seltos is described in this dataset as a Mid-size SUV.
+RETRIEVAL NOTE: Preserve the company, reporting period, market, unit and metric definition when returning this answer.
+
+RAG RECORD 065
+QUESTION: What powertrain is recorded for the Seltos?
+ANSWER: The recorded powertrain is 1.5L petrol / 1.5L diesel / 1.5L turbo petrol.
+RETRIEVAL NOTE: Preserve the company, reporting period, market, unit and metric definition when returning this answer.
+
+RAG RECORD 066
+QUESTION: What performance figure is recorded for the Seltos?
+ANSWER: The representative output is 158 bhp / 253 Nm cited for 1.5L turbo.
+RETRIEVAL NOTE: Preserve the company, reporting period, market, unit and metric definition when returning this answer.
+
+RAG RECORD 067
+QUESTION: What mileage information is recorded for the Seltos?
+ANSWER: The recorded efficiency reference is Variant dependent.
+RETRIEVAL NOTE: Preserve the company, reporting period, market, unit and metric definition when returning this answer.
+
+RAG RECORD 068
+QUESTION: What dimensions are recorded for the Seltos?
+ANSWER: The recorded dimension reference is Approx. 4,365 x 1,800 x 1,645 mm; wheelbase 2,610 mm.
+RETRIEVAL NOTE: Preserve the company, reporting period, market, unit and metric definition when returning this answer.
+
+RAG RECORD 069
+QUESTION: What price information is recorded for the Seltos?
+ANSWER: The current dated market snapshot is ₹11 lakh starting in an August 2026 market snapshot.
+RETRIEVAL NOTE: Preserve the company, reporting period, market, unit and metric definition when returning this answer.
+
+RAG RECORD 070
+QUESTION: Is the Seltos price universal worldwide?
+ANSWER: No. It is a dated India-market reference and varies by market, trim, tax and model year.
+RETRIEVAL NOTE: Preserve the company, reporting period, market, unit and metric definition when returning this answer.
+
+RAG RECORD 071
+QUESTION: Should the Seltos mileage be treated as real-world fuel consumption?
+ANSWER: No. It should be treated as the cited claimed/test-cycle reference unless a source explicitly states otherwise.
+RETRIEVAL NOTE: Preserve the company, reporting period, market, unit and metric definition when returning this answer.
+
+RAG RECORD 072
+QUESTION: What type of vehicle is the Carens?
+ANSWER: Carens is described in this dataset as a MPV.
+RETRIEVAL NOTE: Preserve the company, reporting period, market, unit and metric definition when returning this answer.
+
+RAG RECORD 073
+QUESTION: What powertrain is recorded for the Carens?
+ANSWER: The recorded powertrain is 1.5L petrol / 1.5L turbo petrol / 1.5L diesel.
+RETRIEVAL NOTE: Preserve the company, reporting period, market, unit and metric definition when returning this answer.
+
+RAG RECORD 074
+QUESTION: What performance figure is recorded for the Carens?
+ANSWER: The representative output is Variant dependent.
+RETRIEVAL NOTE: Preserve the company, reporting period, market, unit and metric definition when returning this answer.
+
+RAG RECORD 075
+QUESTION: What mileage information is recorded for the Carens?
+ANSWER: The recorded efficiency reference is Variant dependent.
+RETRIEVAL NOTE: Preserve the company, reporting period, market, unit and metric definition when returning this answer.
+
+RAG RECORD 076
+QUESTION: What dimensions are recorded for the Carens?
+ANSWER: The recorded dimension reference is Approx. 4,540 x 1,800 x 1,708 mm; wheelbase 2,780 mm.
+RETRIEVAL NOTE: Preserve the company, reporting period, market, unit and metric definition when returning this answer.
+
+RAG RECORD 077
+QUESTION: What price information is recorded for the Carens?
+ANSWER: The current dated market snapshot is ₹11.02 lakh starting in an August 2026 market snapshot.
+RETRIEVAL NOTE: Preserve the company, reporting period, market, unit and metric definition when returning this answer.
+
+RAG RECORD 078
+QUESTION: Is the Carens price universal worldwide?
+ANSWER: No. It is a dated India-market reference and varies by market, trim, tax and model year.
+RETRIEVAL NOTE: Preserve the company, reporting period, market, unit and metric definition when returning this answer.
+
+RAG RECORD 079
+QUESTION: Should the Carens mileage be treated as real-world fuel consumption?
+ANSWER: No. It should be treated as the cited claimed/test-cycle reference unless a source explicitly states otherwise.
+RETRIEVAL NOTE: Preserve the company, reporting period, market, unit and metric definition when returning this answer.
+
+RAG RECORD 080
+QUESTION: What type of vehicle is the EV6?
+ANSWER: EV6 is described in this dataset as a Electric crossover.
+RETRIEVAL NOTE: Preserve the company, reporting period, market, unit and metric definition when returning this answer.
+
+RAG RECORD 081
+QUESTION: What powertrain is recorded for the EV6?
+ANSWER: The recorded powertrain is Battery electric.
+RETRIEVAL NOTE: Preserve the company, reporting period, market, unit and metric definition when returning this answer.
+
+RAG RECORD 082
+QUESTION: What performance figure is recorded for the EV6?
+ANSWER: The representative output is Market dependent.
+RETRIEVAL NOTE: Preserve the company, reporting period, market, unit and metric definition when returning this answer.
+
+RAG RECORD 083
+QUESTION: What mileage information is recorded for the EV6?
+ANSWER: The recorded efficiency reference is Electric range depends on battery/test cycle.
+RETRIEVAL NOTE: Preserve the company, reporting period, market, unit and metric definition when returning this answer.
+
+RAG RECORD 084
+QUESTION: What dimensions are recorded for the EV6?
+ANSWER: The recorded dimension reference is Approx. 4,695 x 1,890 x 1,550 mm; wheelbase 2,900 mm.
+RETRIEVAL NOTE: Preserve the company, reporting period, market, unit and metric definition when returning this answer.
+
+RAG RECORD 085
+QUESTION: What price information is recorded for the EV6?
+ANSWER: The current dated market snapshot is ₹76.32 lakh cited in an August 2026 market snapshot.
+RETRIEVAL NOTE: Preserve the company, reporting period, market, unit and metric definition when returning this answer.
+
+RAG RECORD 086
+QUESTION: Is the EV6 price universal worldwide?
+ANSWER: No. It is a dated India-market reference and varies by market, trim, tax and model year.
+RETRIEVAL NOTE: Preserve the company, reporting period, market, unit and metric definition when returning this answer.
+
+RAG RECORD 087
+QUESTION: Should the EV6 mileage be treated as real-world fuel consumption?
+ANSWER: No. It should be treated as the cited claimed/test-cycle reference unless a source explicitly states otherwise.
+RETRIEVAL NOTE: Preserve the company, reporting period, market, unit and metric definition when returning this answer.
+
+RAG RECORD 088
+QUESTION: What type of vehicle is the EV9?
+ANSWER: EV9 is described in this dataset as a Three-row electric SUV.
+RETRIEVAL NOTE: Preserve the company, reporting period, market, unit and metric definition when returning this answer.
+
+RAG RECORD 089
+QUESTION: What powertrain is recorded for the EV9?
+ANSWER: The recorded powertrain is Battery electric.
+RETRIEVAL NOTE: Preserve the company, reporting period, market, unit and metric definition when returning this answer.
+
+RAG RECORD 090
+QUESTION: What performance figure is recorded for the EV9?
+ANSWER: The representative output is Market dependent.
+RETRIEVAL NOTE: Preserve the company, reporting period, market, unit and metric definition when returning this answer.
+
+RAG RECORD 091
+QUESTION: What mileage information is recorded for the EV9?
+ANSWER: The recorded efficiency reference is Electric range depends on battery/test cycle.
+RETRIEVAL NOTE: Preserve the company, reporting period, market, unit and metric definition when returning this answer.
+
+RAG RECORD 092
+QUESTION: What dimensions are recorded for the EV9?
+ANSWER: The recorded dimension reference is Approx. 5,010 x 1,980 x 1,755 mm; wheelbase 3,100 mm.
+RETRIEVAL NOTE: Preserve the company, reporting period, market, unit and metric definition when returning this answer.
+
+RAG RECORD 093
+QUESTION: What price information is recorded for the EV9?
+ANSWER: The current dated market snapshot is ₹1.50 crore cited in an August 2026 market snapshot.
+RETRIEVAL NOTE: Preserve the company, reporting period, market, unit and metric definition when returning this answer.
+
+RAG RECORD 094
+QUESTION: Is the EV9 price universal worldwide?
+ANSWER: No. It is a dated India-market reference and varies by market, trim, tax and model year.
+RETRIEVAL NOTE: Preserve the company, reporting period, market, unit and metric definition when returning this answer.
+
+RAG RECORD 095
+QUESTION: Should the EV9 mileage be treated as real-world fuel consumption?
+ANSWER: No. It should be treated as the cited claimed/test-cycle reference unless a source explicitly states otherwise.
+RETRIEVAL NOTE: Preserve the company, reporting period, market, unit and metric definition when returning this answer.
+
+RAG RECORD 096
+QUESTION: What is the main sales period used for this company?
+ANSWER: The main sales period is Calendar 2025.
+RETRIEVAL NOTE: Preserve the company, reporting period, market, unit and metric definition when returning this answer.
+
+RAG RECORD 097
+QUESTION: What is the headline vehicle-volume figure?
+ANSWER: The headline figure is 3,135,873 global units.
+RETRIEVAL NOTE: Preserve the company, reporting period, market, unit and metric definition when returning this answer.
+
+RAG RECORD 098
+QUESTION: What are the reported regional sales figures?
+ANSWER: The regional figures are Korea: 545,776; Outside Korea: 2,584,238; United States: record 852,155 in 2025 according to Kia America release.
+RETRIEVAL NOTE: Preserve the company, reporting period, market, unit and metric definition when returning this answer.
+
+RAG RECORD 099
+QUESTION: Why must sales and production be distinguished?
+ANSWER: They are different measures: sales describe vehicles sold or delivered, while production describes vehicles manufactured.
+RETRIEVAL NOTE: Preserve the company, reporting period, market, unit and metric definition when returning this answer.
+
+RAG RECORD 100
+QUESTION: Why should wholesale and retail sales not be mixed?
+ANSWER: They represent different points in the distribution chain and can therefore produce different totals.
+RETRIEVAL NOTE: Preserve the company, reporting period, market, unit and metric definition when returning this answer.
+
+RAG RECORD 101
+QUESTION: Why are model prices dated?
+ANSWER: Automotive prices change with model years, variants, taxes, offers and market conditions.
+RETRIEVAL NOTE: Preserve the company, reporting period, market, unit and metric definition when returning this answer.
+
+RAG RECORD 102
+QUESTION: Why should model specifications include the market?
+ANSWER: A model can have different engines, dimensions, features and pricing in different countries.
+RETRIEVAL NOTE: Preserve the company, reporting period, market, unit and metric definition when returning this answer.
+
+RAG RECORD 103
+QUESTION: What electrification information is available?
+ANSWER: Kia reported 186,000 global retail electrified-vehicle sales in Q4 2025 and continued expansion of hybrid and EV products.
+RETRIEVAL NOTE: Preserve the company, reporting period, market, unit and metric definition when returning this answer.
+
+RAG RECORD 104
+QUESTION: What financial information is included?
+ANSWER: 2025 revenue was KRW 114.141 trillion; operating profit was KRW 9.078 trillion; net profit was KRW 7.554 trillion.
+RETRIEVAL NOTE: Preserve the company, reporting period, market, unit and metric definition when returning this answer.
+
+RAG RECORD 105
+QUESTION: How should a RAG system store regional sales?
+ANSWER: Store company, year, region, metric type, unit, value and source as metadata.
+RETRIEVAL NOTE: Preserve the company, reporting period, market, unit and metric definition when returning this answer.
+
+RAG RECORD 106
+QUESTION: How should a RAG system store model price?
+ANSWER: Store model, market, currency, price basis, date, variant and source.
+RETRIEVAL NOTE: Preserve the company, reporting period, market, unit and metric definition when returning this answer.
+
+RAG RECORD 107
+QUESTION: What should happen when a specification is market dependent?
+ANSWER: The answer should say that it is market or variant dependent instead of inventing a universal value.
+RETRIEVAL NOTE: Preserve the company, reporting period, market, unit and metric definition when returning this answer.
+
+RAG RECORD 108
+QUESTION: What are useful RAG questions for this document?
+ANSWER: Questions about sales, regions, models, powertrains, efficiency, dimensions, prices, safety, EVs, manufacturing and finance are useful.
+RETRIEVAL NOTE: Preserve the company, reporting period, market, unit and metric definition when returning this answer.
+
+RAG RECORD 109
+QUESTION: Can the largest sales region be determined?
+ANSWER: Yes, by comparing the regional values after confirming they use the same metric and period.
+RETRIEVAL NOTE: Preserve the company, reporting period, market, unit and metric definition when returning this answer.
+
+RAG RECORD 110
+QUESTION: Can global sales be compared with another company?
+ANSWER: Yes, if the reporting period, sales definition and scope are aligned.
+RETRIEVAL NOTE: Preserve the company, reporting period, market, unit and metric definition when returning this answer.
+
+RAG RECORD 111
+QUESTION: What type of vehicle is the Sonet?
+ANSWER: Sonet is described in this dataset as a Compact SUV.
+RETRIEVAL NOTE: Preserve the company, reporting period, market, unit and metric definition when returning this answer.
+
+RAG RECORD 112
+QUESTION: What powertrain is recorded for the Sonet?
+ANSWER: The recorded powertrain is 1.2L petrol / 1.0L turbo petrol / 1.5L diesel.
+RETRIEVAL NOTE: Preserve the company, reporting period, market, unit and metric definition when returning this answer.
+
+RAG RECORD 113
+QUESTION: What performance figure is recorded for the Sonet?
+ANSWER: The representative output is Variant dependent.
+RETRIEVAL NOTE: Preserve the company, reporting period, market, unit and metric definition when returning this answer.
+
+RAG RECORD 114
+QUESTION: What mileage information is recorded for the Sonet?
+ANSWER: The recorded efficiency reference is Market/variant dependent.
+RETRIEVAL NOTE: Preserve the company, reporting period, market, unit and metric definition when returning this answer.
+
+RAG RECORD 115
+QUESTION: What dimensions are recorded for the Sonet?
+ANSWER: The recorded dimension reference is Approx. 3,995 x 1,790 x 1,642 mm; wheelbase 2,500 mm.
+RETRIEVAL NOTE: Preserve the company, reporting period, market, unit and metric definition when returning this answer.
+
+RAG RECORD 116
+QUESTION: What price information is recorded for the Sonet?
+ANSWER: The current dated market snapshot is ₹7.41 lakh starting in an August 2026 market snapshot.
+RETRIEVAL NOTE: Preserve the company, reporting period, market, unit and metric definition when returning this answer.
+
+RAG RECORD 117
+QUESTION: Is the Sonet price universal worldwide?
+ANSWER: No. It is a dated India-market reference and varies by market, trim, tax and model year.
+RETRIEVAL NOTE: Preserve the company, reporting period, market, unit and metric definition when returning this answer.
+
+RAG RECORD 118
+QUESTION: Should the Sonet mileage be treated as real-world fuel consumption?
+ANSWER: No. It should be treated as the cited claimed/test-cycle reference unless a source explicitly states otherwise.
+RETRIEVAL NOTE: Preserve the company, reporting period, market, unit and metric definition when returning this answer.
+
+RAG RECORD 119
+QUESTION: What type of vehicle is the Seltos?
+ANSWER: Seltos is described in this dataset as a Mid-size SUV.
+RETRIEVAL NOTE: Preserve the company, reporting period, market, unit and metric definition when returning this answer.
+
+RAG RECORD 120
+QUESTION: What powertrain is recorded for the Seltos?
+ANSWER: The recorded powertrain is 1.5L petrol / 1.5L diesel / 1.5L turbo petrol.
+RETRIEVAL NOTE: Preserve the company, reporting period, market, unit and metric definition when returning this answer.
+
+RAG RECORD 121
+QUESTION: What performance figure is recorded for the Seltos?
+ANSWER: The representative output is 158 bhp / 253 Nm cited for 1.5L turbo.
+RETRIEVAL NOTE: Preserve the company, reporting period, market, unit and metric definition when returning this answer.
+
+RAG RECORD 122
+QUESTION: What mileage information is recorded for the Seltos?
+ANSWER: The recorded efficiency reference is Variant dependent.
+RETRIEVAL NOTE: Preserve the company, reporting period, market, unit and metric definition when returning this answer.
+
+RAG RECORD 123
+QUESTION: What dimensions are recorded for the Seltos?
+ANSWER: The recorded dimension reference is Approx. 4,365 x 1,800 x 1,645 mm; wheelbase 2,610 mm.
+RETRIEVAL NOTE: Preserve the company, reporting period, market, unit and metric definition when returning this answer.
+
+RAG RECORD 124
+QUESTION: What price information is recorded for the Seltos?
+ANSWER: The current dated market snapshot is ₹11 lakh starting in an August 2026 market snapshot.
+RETRIEVAL NOTE: Preserve the company, reporting period, market, unit and metric definition when returning this answer.
+
+RAG RECORD 125
+QUESTION: Is the Seltos price universal worldwide?
+ANSWER: No. It is a dated India-market reference and varies by market, trim, tax and model year.
+RETRIEVAL NOTE: Preserve the company, reporting period, market, unit and metric definition when returning this answer.
+
+RAG RECORD 126
+QUESTION: Should the Seltos mileage be treated as real-world fuel consumption?
+ANSWER: No. It should be treated as the cited claimed/test-cycle reference unless a source explicitly states otherwise.
+RETRIEVAL NOTE: Preserve the company, reporting period, market, unit and metric definition when returning this answer.
+
+RAG RECORD 127
+QUESTION: What type of vehicle is the Carens?
+ANSWER: Carens is described in this dataset as a MPV.
+RETRIEVAL NOTE: Preserve the company, reporting period, market, unit and metric definition when returning this answer.
+
+RAG RECORD 128
+QUESTION: What powertrain is recorded for the Carens?
+ANSWER: The recorded powertrain is 1.5L petrol / 1.5L turbo petrol / 1.5L diesel.
+RETRIEVAL NOTE: Preserve the company, reporting period, market, unit and metric definition when returning this answer.
+
+RAG RECORD 129
+QUESTION: What performance figure is recorded for the Carens?
+ANSWER: The representative output is Variant dependent.
+RETRIEVAL NOTE: Preserve the company, reporting period, market, unit and metric definition when returning this answer.
+
+RAG RECORD 130
+QUESTION: What mileage information is recorded for the Carens?
+ANSWER: The recorded efficiency reference is Variant dependent.
+RETRIEVAL NOTE: Preserve the company, reporting period, market, unit and metric definition when returning this answer.
+
+RAG RECORD 131
+QUESTION: What dimensions are recorded for the Carens?
+ANSWER: The recorded dimension reference is Approx. 4,540 x 1,800 x 1,708 mm; wheelbase 2,780 mm.
+RETRIEVAL NOTE: Preserve the company, reporting period, market, unit and metric definition when returning this answer.
+
+RAG RECORD 132
+QUESTION: What price information is recorded for the Carens?
+ANSWER: The current dated market snapshot is ₹11.02 lakh starting in an August 2026 market snapshot.
+RETRIEVAL NOTE: Preserve the company, reporting period, market, unit and metric definition when returning this answer.
+
+RAG RECORD 133
+QUESTION: Is the Carens price universal worldwide?
+ANSWER: No. It is a dated India-market reference and varies by market, trim, tax and model year.
+RETRIEVAL NOTE: Preserve the company, reporting period, market, unit and metric definition when returning this answer.
+
+RAG RECORD 134
+QUESTION: Should the Carens mileage be treated as real-world fuel consumption?
+ANSWER: No. It should be treated as the cited claimed/test-cycle reference unless a source explicitly states otherwise.
+RETRIEVAL NOTE: Preserve the company, reporting period, market, unit and metric definition when returning this answer.
+
+RAG RECORD 135
+QUESTION: What type of vehicle is the EV6?
+ANSWER: EV6 is described in this dataset as a Electric crossover.
+RETRIEVAL NOTE: Preserve the company, reporting period, market, unit and metric definition when returning this answer.
+
+RAG RECORD 136
+QUESTION: What powertrain is recorded for the EV6?
+ANSWER: The recorded powertrain is Battery electric.
+RETRIEVAL NOTE: Preserve the company, reporting period, market, unit and metric definition when returning this answer.
+
+RAG RECORD 137
+QUESTION: What performance figure is recorded for the EV6?
+ANSWER: The representative output is Market dependent.
+RETRIEVAL NOTE: Preserve the company, reporting period, market, unit and metric definition when returning this answer.
+
+RAG RECORD 138
+QUESTION: What mileage information is recorded for the EV6?
+ANSWER: The recorded efficiency reference is Electric range depends on battery/test cycle.
+RETRIEVAL NOTE: Preserve the company, reporting period, market, unit and metric definition when returning this answer.
+
+RAG RECORD 139
+QUESTION: What dimensions are recorded for the EV6?
+ANSWER: The recorded dimension reference is Approx. 4,695 x 1,890 x 1,550 mm; wheelbase 2,900 mm.
+RETRIEVAL NOTE: Preserve the company, reporting period, market, unit and metric definition when returning this answer.
+
+RAG RECORD 140
+QUESTION: What price information is recorded for the EV6?
+ANSWER: The current dated market snapshot is ₹76.32 lakh cited in an August 2026 market snapshot.
+RETRIEVAL NOTE: Preserve the company, reporting period, market, unit and metric definition when returning this answer.
+
+RAG RECORD 141
+QUESTION: Is the EV6 price universal worldwide?
+ANSWER: No. It is a dated India-market reference and varies by market, trim, tax and model year.
+RETRIEVAL NOTE: Preserve the company, reporting period, market, unit and metric definition when returning this answer.
+
+RAG RECORD 142
+QUESTION: Should the EV6 mileage be treated as real-world fuel consumption?
+ANSWER: No. It should be treated as the cited claimed/test-cycle reference unless a source explicitly states otherwise.
+RETRIEVAL NOTE: Preserve the company, reporting period, market, unit and metric definition when returning this answer.
+
+RAG RECORD 143
+QUESTION: What type of vehicle is the EV9?
+ANSWER: EV9 is described in this dataset as a Three-row electric SUV.
+RETRIEVAL NOTE: Preserve the company, reporting period, market, unit and metric definition when returning this answer.
+
+RAG RECORD 144
+QUESTION: What powertrain is recorded for the EV9?
+ANSWER: The recorded powertrain is Battery electric.
+RETRIEVAL NOTE: Preserve the company, reporting period, market, unit and metric definition when returning this answer.
+
+RAG RECORD 145
+QUESTION: What performance figure is recorded for the EV9?
+ANSWER: The representative output is Market dependent.
+RETRIEVAL NOTE: Preserve the company, reporting period, market, unit and metric definition when returning this answer.
+
+RAG RECORD 146
+QUESTION: What mileage information is recorded for the EV9?
+ANSWER: The recorded efficiency reference is Electric range depends on battery/test cycle.
+RETRIEVAL NOTE: Preserve the company, reporting period, market, unit and metric definition when returning this answer.
+
+RAG RECORD 147
+QUESTION: What dimensions are recorded for the EV9?
+ANSWER: The recorded dimension reference is Approx. 5,010 x 1,980 x 1,755 mm; wheelbase 3,100 mm.
+RETRIEVAL NOTE: Preserve the company, reporting period, market, unit and metric definition when returning this answer.
+
+RAG RECORD 148
+QUESTION: What price information is recorded for the EV9?
+ANSWER: The current dated market snapshot is ₹1.50 crore cited in an August 2026 market snapshot.
+RETRIEVAL NOTE: Preserve the company, reporting period, market, unit and metric definition when returning this answer.
+
+RAG RECORD 149
+QUESTION: Is the EV9 price universal worldwide?
+ANSWER: No. It is a dated India-market reference and varies by market, trim, tax and model year.
+RETRIEVAL NOTE: Preserve the company, reporting period, market, unit and metric definition when returning this answer.
+
+RAG RECORD 150
+QUESTION: Should the EV9 mileage be treated as real-world fuel consumption?
+ANSWER: No. It should be treated as the cited claimed/test-cycle reference unless a source explicitly states otherwise.
+RETRIEVAL NOTE: Preserve the company, reporting period, market, unit and metric definition when returning this answer.
+
+RAG RECORD 151
+QUESTION: What is the main sales period used for this company?
+ANSWER: The main sales period is Calendar 2025.
+RETRIEVAL NOTE: Preserve the company, reporting period, market, unit and metric definition when returning this answer.
+
+RAG RECORD 152
+QUESTION: What is the headline vehicle-volume figure?
+ANSWER: The headline figure is 3,135,873 global units.
+RETRIEVAL NOTE: Preserve the company, reporting period, market, unit and metric definition when returning this answer.
+
+RAG RECORD 153
+QUESTION: What are the reported regional sales figures?
+ANSWER: The regional figures are Korea: 545,776; Outside Korea: 2,584,238; United States: record 852,155 in 2025 according to Kia America release.
+RETRIEVAL NOTE: Preserve the company, reporting period, market, unit and metric definition when returning this answer.
+
+RAG RECORD 154
+QUESTION: Why must sales and production be distinguished?
+ANSWER: They are different measures: sales describe vehicles sold or delivered, while production describes vehicles manufactured.
+RETRIEVAL NOTE: Preserve the company, reporting period, market, unit and metric definition when returning this answer.
+
+RAG RECORD 155
+QUESTION: Why should wholesale and retail sales not be mixed?
+ANSWER: They represent different points in the distribution chain and can therefore produce different totals.
+RETRIEVAL NOTE: Preserve the company, reporting period, market, unit and metric definition when returning this answer.
+
+RAG RECORD 156
+QUESTION: Why are model prices dated?
+ANSWER: Automotive prices change with model years, variants, taxes, offers and market conditions.
+RETRIEVAL NOTE: Preserve the company, reporting period, market, unit and metric definition when returning this answer.
+
+RAG RECORD 157
+QUESTION: Why should model specifications include the market?
+ANSWER: A model can have different engines, dimensions, features and pricing in different countries.
+RETRIEVAL NOTE: Preserve the company, reporting period, market, unit and metric definition when returning this answer.
+
+RAG RECORD 158
+QUESTION: What electrification information is available?
+ANSWER: Kia reported 186,000 global retail electrified-vehicle sales in Q4 2025 and continued expansion of hybrid and EV products.
+RETRIEVAL NOTE: Preserve the company, reporting period, market, unit and metric definition when returning this answer.
+
+RAG RECORD 159
+QUESTION: What financial information is included?
+ANSWER: 2025 revenue was KRW 114.141 trillion; operating profit was KRW 9.078 trillion; net profit was KRW 7.554 trillion.
+RETRIEVAL NOTE: Preserve the company, reporting period, market, unit and metric definition when returning this answer.
+
+RAG RECORD 160
+QUESTION: How should a RAG system store regional sales?
+ANSWER: Store company, year, region, metric type, unit, value and source as metadata.
+RETRIEVAL NOTE: Preserve the company, reporting period, market, unit and metric definition when returning this answer.
+
+RAG RECORD 161
+QUESTION: How should a RAG system store model price?
+ANSWER: Store model, market, currency, price basis, date, variant and source.
+RETRIEVAL NOTE: Preserve the company, reporting period, market, unit and metric definition when returning this answer.
+
+RAG RECORD 162
+QUESTION: What should happen when a specification is market dependent?
+ANSWER: The answer should say that it is market or variant dependent instead of inventing a universal value.
+RETRIEVAL NOTE: Preserve the company, reporting period, market, unit and metric definition when returning this answer.
+
+RAG RECORD 163
+QUESTION: What are useful RAG questions for this document?
+ANSWER: Questions about sales, regions, models, powertrains, efficiency, dimensions, prices, safety, EVs, manufacturing and finance are useful.
+RETRIEVAL NOTE: Preserve the company, reporting period, market, unit and metric definition when returning this answer.
+
+RAG RECORD 164
+QUESTION: Can the largest sales region be determined?
+ANSWER: Yes, by comparing the regional values after confirming they use the same metric and period.
+RETRIEVAL NOTE: Preserve the company, reporting period, market, unit and metric definition when returning this answer.
+
+RAG RECORD 165
+QUESTION: Can global sales be compared with another company?
+ANSWER: Yes, if the reporting period, sales definition and scope are aligned.
+RETRIEVAL NOTE: Preserve the company, reporting period, market, unit and metric definition when returning this answer.
+
+
+### 20. Source register
+
+Kia 2025 annual results: https://worldwide.kia.com/en/newsroom/view/?id=161092
+
+Kia 2025 global sales record: https://www.hyundaimotorgroup.com/en/news/kia-announces-global-sales-record-for-2025-and-shares-2026-targets
+
+Kia financial graphs: https://worldwide.kia.com/en/company/investor-relations/financial/financial-graphs
+
+Kia financial summary: https://worldwide.kia.com/en/company/investor-relations/financial/summary-statements
+
+Kia India market snapshot: https://www.carwale.com/kia-cars/
+
+END OF DATASET

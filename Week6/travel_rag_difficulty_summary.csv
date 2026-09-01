@@ -1,0 +1,4 @@
+difficulty,questions,answer_correctness,groundedness,citation_correctness,overall_score,retrieval_hit_rate,source_recall,avg_latency_s,total_cost_usd
+easy,10,100.0,100.0,100.0,100.0,0.0,0.0,1.3177,0.0011
+hard,5,52.0,52.0,48.0,52.0,0.0,0.0,1.8532,0.0007
+medium,5,96.0,96.0,100.0,96.0,0.0,0.0,1.7504,0.0007

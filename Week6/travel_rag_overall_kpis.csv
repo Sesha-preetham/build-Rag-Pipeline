@@ -1,0 +1,14 @@
+KPI,Value
+Total Questions,20.0
+Answer Correctness (%),86.99999999999999
+Groundedness (%),86.99999999999999
+Citation Correctness (%),86.99999999999999
+Overall LLM Judge Score (%),86.99999999999999
+Retrieval Hit Rate (%),0.0
+Average Source Recall (%),0.0
+Average Source Precision (%),0.0
+All Required Sources Retrieved (%),0.0
+Average Latency (seconds),1.559711182117462
+P50 Latency (seconds),1.4873887300491333
+Total RAG Cost (USD),0.0025508999999999996
+Average Cost per Question (USD),0.00012754499999999999
